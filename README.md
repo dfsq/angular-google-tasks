@@ -1,1 +1,1 @@
-# Google Tasks application built with AngularJS.
+# Google Tasks
