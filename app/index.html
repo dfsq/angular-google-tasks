@@ -2,19 +2,47 @@
 <html lang="en" ng-app="googleTasks">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="Google Tasks application built with AngularJs">
+	<meta name="keywords" content="google tasks, angularjs, application">
+	<meta name="viewport" content="width=device-width">
+	<title>Angular Google Tasks</title>
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
 	<link rel="stylesheet" href="assets/styles/app.css"/>
 </head>
 <body ng-controller="appController">
 
-	<h1>{{title}}</h1>
+	<div class="app-loading" ng-hide="appReady">
+		<div class="message">
+			<h3>Loading <i></i><i></i><i></i></h3>
+		</div>
+		<script>
+			var splash = document.querySelector(".app-loading"),
+				dots = splash.querySelectorAll(".message i"),
+				i = 0, l = dots.length, tm,
+				next = function () {
+					if (/ng-hide/.test(splash.className)) clearTimeout(tm), splash.parentNode.removeChild(splash);
+					else {
+						i = ++i % (l + 1);
+						for (var a = 0; a < (i || l);) dots[a++].className = i ? "s" : "";
+						tm = setTimeout(next, 300)
+					}
+				};
+			next();
+		</script>
+	</div>
+
+	<h1>Google Tasks</h1>
 
 	<script src="bower_components/angular/angular.min.js"></script>
 	<script src="bower_components/angular-route/angular-route.min.js"></script>
+	<script src="bower_components/angular-resource/angular-resource.min.js"></script>
 
 	<script src="app.js"></script>
 	<script src="app-controller.js"></script>
+	<script src="components/services/application-service.js"></script>
 
 </body>
 </html>

@@ -1,5 +1,9 @@
 'use strict';
 
-angular.module('googleTasks').controller('appController', ['$scope', function($scope) {
-	$scope.title = 'Angular Google Tasks';
+angular.module('googleTasks').controller('appController', ['$scope', 'application', function($scope, application) {
+
+	application.ready(function () {
+		$scope.appReady = application.isReady;
+	});
+
 }]);
