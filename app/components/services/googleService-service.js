@@ -3,47 +3,57 @@
 /**
  * @class googleService
  */
-angular.module('components.services.application').service('googleService', ['$http', '$rootScope', '$q', function($http, $rootScope, $q) {
-
-	window.auth = this;
+angular.module('components.services.application').factory('googleService', ['$http', '$rootScope', '$q', function($http, $rootScope, $q) {
 
 	var clientId = '421579928051-79o2r8382t52m5tdls381l4rlns6hr95.apps.googleusercontent.com',
 		apiKey = 'AIzaSyCoFGS6BzXCErahLsI8GFsOP-xQ5P7Qc0U',
 		scopes = 'https://www.googleapis.com/auth/tasks',
-		deferred = $q.defer(),
-		self = this;
+		deferred,
+		service;
 
-	this.handleClientLoad = function() {
-		gapi.client.setApiKey(apiKey);
-		window.setTimeout(self.checkAuth, 1);
-	};
+	service = {
+		
+		load: function() {
+			
+			deferred = $q.defer();
+			window.gapiLoaded = service.handleClientLoad;
+			
+			var script = document.createElement('script');
+			script.src = 'https://apis.google.com/js/client.js?onload=gapiLoaded';
+			document.body.appendChild(script);
+			
+			return deferred.promise;
+		},
+		
+		handleClientLoad: function() {
+			gapi.client.setApiKey(apiKey);
+			window.setTimeout(service.checkAuth, 1);
+		},
+		
+		checkAuth: function(immediate) {
+			gapi.auth.authorize({
+				client_id: clientId,
+				scope: scopes,
+				immediate: typeof immediate === 'undefined' ? true : immediate
+			}, service.handleAuthResult);
+		},
+		
+		handleAuthResult: function(authResult) {
+			if (authResult && !authResult.error) {
+				deferred.resolve(authResult);
+			} 
+			else {
+				deferred.reject(authResult.error);
+			}
+		},
 
-	this.login = function() {
-		this.checkAuth(false);
-		return deferred.promise;
-	};
-
-	this.checkAuth = function(immediate) {
-		gapi.auth.authorize({
-			client_id: clientId,
-			scope: scopes,
-			immediate: typeof immediate === 'undefined' ? true : immediate
-		}, self.handleAuthResult);
-	};
-
-	this.handleAuthResult = function(authResult) {
-		if (authResult && !authResult.error) {
-			var data = {};
-			gapi.client.load('oauth2', 'v2', function () {
-				var request = gapi.client.oauth2.userinfo.get();
-				request.execute(function (resp) {
-					data.email = resp.email;
-				});
-			});
-			deferred.resolve(data);
-		} else {
-			deferred.reject('error');
+		login: function() {
+			deferred = $q.defer();
+			service.checkAuth(false);
+			return deferred.promise;
 		}
 	};
+	
+	return service;
 
 }]);
