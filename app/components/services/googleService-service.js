@@ -15,14 +15,22 @@ angular.module('components.services.application').factory('googleService', ['$ht
 		
 		load: function() {
 			
+			var loadedDeferred = $q.defer();
+			
 			deferred = $q.defer();
+			deferred.promise.then(function(data) { 
+				loadedDeferred.resolve(data); 
+			}, function(data) { 
+				loadedDeferred.resolve(data); 
+			});
+			
 			window.gapiLoaded = service.handleClientLoad;
 			
 			var script = document.createElement('script');
 			script.src = 'https://apis.google.com/js/client.js?onload=gapiLoaded';
 			document.body.appendChild(script);
 			
-			return deferred.promise;
+			return loadedDeferred.promise;
 		},
 		
 		handleClientLoad: function() {
@@ -43,7 +51,7 @@ angular.module('components.services.application').factory('googleService', ['$ht
 				deferred.resolve(authResult);
 			} 
 			else {
-				deferred.reject(authResult.error);
+				deferred.reject(authResult);
 			}
 		},
 
