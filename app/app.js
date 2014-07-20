@@ -2,7 +2,7 @@
 
 angular.module('googleTasks', [
 	'ngRoute',
-	'components.services.application'
+	'components.services'
 ]);
 
 angular.module('googleTasks').run(['$timeout', '$q', 'application', 'googleService', function ($timeout, $q, application, googleService) {

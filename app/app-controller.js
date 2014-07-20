@@ -1,7 +1,9 @@
 'use strict';
 
-angular.module('googleTasks').controller('appController', ['$scope', 'application', 'googleService', function($scope, application, googleService) {
+angular.module('googleTasks').controller('appController', ['$scope', 'application', 'googleService', 'tasks', function($scope, application, googleService, tasks) {
 
+	window.tasks = tasks;
+	
 	application.ready(function () {
 		$scope.appReady = application.isReady;
 	});

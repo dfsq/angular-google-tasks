@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('components.services.application').factory('application', ['$q', function ($q) {
+angular.module('components.services.application', []).factory('application', ['$q', function ($q) {
 
 	var stack = [],
 

@@ -3,7 +3,7 @@
 /**
  * @class googleService
  */
-angular.module('components.services.application').factory('googleService', ['$http', '$rootScope', '$q', function($http, $rootScope, $q) {
+angular.module('components.services.googleService', []).factory('googleService', ['$http', '$rootScope', '$q', function($http, $rootScope, $q) {
 
 	var clientId = '421579928051-79o2r8382t52m5tdls381l4rlns6hr95.apps.googleusercontent.com',
 		apiKey = 'AIzaSyCoFGS6BzXCErahLsI8GFsOP-xQ5P7Qc0U',
