@@ -34,9 +34,7 @@
 		</script>
 	</div>
 
-	<h1>Google Tasks</h1>
-	
-	<button ng-click="login()">Login</button>
+	<div ng-view></div>
 
 	<!-- buildjs: modules -->
 	<script src="bower_components/angular/angular.min.js"></script>
@@ -51,6 +49,15 @@
 	<script src="components/services/application-service.js"></script>
 	<script src="components/services/googleService-service.js"></script>
 	<script src="components/services/tasks-service.js"></script>
+	
+	<!-- login module -->
+	<script src="login/login.js"></script>
+	<script src="login/login-controller.js"></script>
+	
+	<!-- tasklists module -->
+	<script src="tasklists/tasklists.js"></script>
+	<script src="tasklists/tasklists-controller.js"></script>
+	
 	<!-- buildjs -->
 
 </body>

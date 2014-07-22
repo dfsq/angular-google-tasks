@@ -2,19 +2,29 @@
 
 angular.module('googleTasks', [
 	'ngRoute',
-	'components.services'
-]);
+	'components.services',
+	'login',
+	'tasklists'
+])
 
-angular.module('googleTasks').run(['$timeout', '$q', 'application', 'googleService', function ($timeout, $q, application, googleService) {
+.run(['$timeout', '$q', '$location', 'application', 'googleService', 
+function ($timeout, $q, $location, application, googleService) {
 
+	/** @property signed_in */
+		
 	// Load Google API library
 	var gapiPromise = googleService.load().then(function(data) {
 		console.log('gapi loaded', data);
+		
+		if (!data.status.signed_in) {
+			$location.path('/login');
+		}
 	});
 		
 	// Splash screen will be visible at least 500ms
 	var timeout = $timeout(angular.noop, 1000, false);
 
 	$q.all([timeout, gapiPromise]).then(application.ready);
+	
 
 }]);
