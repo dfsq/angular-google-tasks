@@ -19,12 +19,14 @@ function ($timeout, $q, $location, application, googleService) {
 		if (!data.status.signed_in) {
 			$location.path('/login');
 		}
+		else {
+			$location.path('/tasklists');
+		}
 	});
 		
 	// Splash screen will be visible at least 500ms
 	var timeout = $timeout(angular.noop, 1000, false);
 
 	$q.all([timeout, gapiPromise]).then(application.ready);
-	
 
 }]);
