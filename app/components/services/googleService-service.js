@@ -18,10 +18,10 @@ angular.module('components.services.googleService', []).factory('googleService',
 			var loadedDeferred = $q.defer();
 			
 			deferred = $q.defer();
-			deferred.promise.then(function(data) { 
-				loadedDeferred.resolve(data); 
-			}, function(data) { 
-				loadedDeferred.resolve(data); 
+			deferred.promise.then(function(data) {
+				loadedDeferred.resolve(data);
+			}, function(data) {
+				loadedDeferred.resolve(data);
 			});
 			
 			window.gapiLoaded = service.handleClientLoad;
@@ -49,7 +49,7 @@ angular.module('components.services.googleService', []).factory('googleService',
 		handleAuthResult: function(authResult) {
 			if (authResult && !authResult.error) {
 				deferred.resolve(authResult);
-			} 
+			}
 			else {
 				deferred.reject(authResult);
 			}

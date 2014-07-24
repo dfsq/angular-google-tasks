@@ -1,8 +1,9 @@
 'use strict';
 
-angular.module('tasklists', ['ngRoute'], ['$routeProvider', function($routeProvider) {
+angular.module('tasklists', ['ngRoute'], ['$routeProvider', 'securityProvider', function($routeProvider, securityProvider) {
 	$routeProvider.when('/tasklists', {
 		templateUrl: 'tasklists/tasklists.html',
-		controller: 'tasklistsController'
+		controller: 'tasklistsController',
+		resolve: securityProvider.requestSignedIn
 	});
 }]);
