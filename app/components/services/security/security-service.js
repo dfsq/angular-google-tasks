@@ -21,7 +21,7 @@ angular.module('components.services.security').provider('security', {
 					return $q.when(service.authObject);
 				}
 				else {
-					return googleService.login();
+					return googleService.load();
 				}
 			},
 

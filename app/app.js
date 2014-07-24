@@ -14,6 +14,7 @@ function ($rootScope, $timeout, $q, $location, application, googleService, secur
 		
 	// Load Google API library
 	var gapiPromise = googleService.load().then(function(data) {
+		debugger
 		console.log('gapi loaded', data);
 		security.authObject = data;
 	});

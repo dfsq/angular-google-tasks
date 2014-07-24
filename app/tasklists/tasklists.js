@@ -4,6 +4,8 @@ angular.module('tasklists', ['ngRoute'], ['$routeProvider', 'securityProvider', 
 	$routeProvider.when('/tasklists', {
 		templateUrl: 'tasklists/tasklists.html',
 		controller: 'tasklistsController',
-		resolve: securityProvider.requestSignedIn
+		resolve: {
+			auth: securityProvider.requestSignedIn
+		}
 	});
 }]);
