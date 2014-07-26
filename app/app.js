@@ -7,6 +7,15 @@ angular.module('googleTasks', [
 	'tasklists'
 ])
 
+
+	.config(['googleApiProvider', function(googleApiProvider) {
+		googleApiProvider.setConfig({
+			clientId: '421579928051-79o2r8382t52m5tdls381l4rlns6hr95.apps.googleusercontent.com',
+			apiKey: 'AIzaSyCoFGS6BzXCErahLsI8GFsOP-xQ5P7Qc0U',
+			scopes: ['https://www.googleapis.com/auth/tasks']	
+		});
+	}])
+
 .run(['$rootScope', '$timeout', '$q', '$location', 'application', 'googleService', 'security',
 function ($rootScope, $timeout, $q, $location, application, googleService, security) {
 
@@ -14,7 +23,6 @@ function ($rootScope, $timeout, $q, $location, application, googleService, secur
 		
 	// Load Google API library
 	var gapiPromise = googleService.load().then(function(data) {
-		debugger
 		console.log('gapi loaded', data);
 		security.authObject = data;
 	});
