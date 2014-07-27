@@ -13,7 +13,7 @@ angular.module('components.services.googleApi', []).provider('googleApi', functi
 	
 	this.$get = ['$q', function($q) {
 		
-		return {
+		var service = {
 			/**
 			 * Load client library.
 			 * @returns {promise}
@@ -24,6 +24,7 @@ angular.module('components.services.googleApi', []).provider('googleApi', functi
 				
 				window.gapiLoaded = function() {
 					gapi.client.setApiKey(config.apiKey);
+					delete window.gapiLoaded;
 					deferred.resolve();
 				};
 
@@ -32,7 +33,35 @@ angular.module('components.services.googleApi', []).provider('googleApi', functi
 				document.body.appendChild(script);
 				
 				return deferred.promise;
+			},
+
+			login: function(immediate) {
+				var deferred = $q.defer();
+				window.setTimeout(function() {
+					service.checkAuth(immediate, deferred);
+				}, 1);
+				return deferred.promise;
+			},
+
+			checkAuth: function(immediate, deferred) {
+
+				function handleAuthResult(authResult) {
+					if (authResult && !authResult.error) {
+						deferred.resolve(authResult);
+					}
+					else {
+						deferred.reject(authResult);
+					}
+				}
+				
+				gapi.auth.authorize({
+					client_id: config.clientId,
+					scope: config.scopes,
+					immediate: immediate
+				}, handleAuthResult);
 			}
 		};
+		
+		return service;
 	}]
 });

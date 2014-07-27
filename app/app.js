@@ -22,10 +22,10 @@ function ($rootScope, $timeout, $q, $location, application, googleService, secur
 	/** @property signed_in */
 		
 	// Load Google API library
-	var gapiPromise = googleService.load().then(function(data) {
-		console.log('gapi loaded', data);
-		security.authObject = data;
-	});
+//	var gapiPromise = googleService.load().then(function(data) {
+//		console.log('gapi loaded', data);
+//		security.authObject = data;
+//	});
 		
 	// Splash screen will be visible at least 500ms
 	var timeout = $timeout(angular.noop, 1000, false),
@@ -35,12 +35,12 @@ function ($rootScope, $timeout, $q, $location, application, googleService, secur
 			onRouteChangeSuccess();
 		});
 
-	$q.all([timeout, gapiPromise, routeChangePromise.promise]).then(application.ready);
+	$q.all([timeout, /*gapiPromise,*/ routeChangePromise.promise]).then(application.ready);
 
 	// Listen route change events
 	$rootScope.$on('$locationChangeStart', function () {
 
-		console.log('LOCATION CHANGE START', $location.path());
+		//console.log('LOCATION CHANGE START', $location.path());
 
 		var path = $location.path();
 
