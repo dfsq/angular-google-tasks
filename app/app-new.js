@@ -1,10 +1,7 @@
 'use strict';
 
-angular.module('googleTasksk', [
-	'ngRoute',
-	'components.services',
-	'login',
-	'tasklists'
+angular.module('googleTasks', [
+	'ngRoute'
 ])
 	.config(['googleApiProvider', function(googleApiProvider) {
 		googleApiProvider.setConfig({
