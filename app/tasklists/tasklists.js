@@ -6,6 +6,9 @@ angular.module('tasklists', ['ngRoute'], ['$routeProvider', 'securityProvider', 
 		controller: 'tasklistsController',
 		resolve: {
 			auth: securityProvider.requestSignedIn
+		},
+		onRouteError: {
+			redirectTo: '/login'
 		}
 	});
 }]);
