@@ -19,10 +19,12 @@ angular.module('googleTasks', [
 	
 		/** @property signed_in */
 			
-		window.security = security;
-			
-		var gapiPromise = googleApi.load().then(function(data) {
-			security.authObject = data;
+		var gapiPromise = googleApi.load().then(function() {
+			return googleApi.login(true).then(function(data) {
+				return security.authObject = data;
+			}, function(data) {
+				return security.authObject = data;
+			});
 		}),
 		
 		// Splash screen will be visible at least 500ms
@@ -35,6 +37,9 @@ angular.module('googleTasks', [
 			onRouteChangeSuccess();
 		});
 	
+		// Need to remember this promise for the first time
+		security.authState = gapiPromise;
+		
 		$q.all([timeout, gapiPromise, routeChangePromise.promise]).then(function() {
 			application.ready();
 		});
