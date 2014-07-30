@@ -15,11 +15,13 @@ angular.module('googleTasks', [
 		});
 	}])
 
-	.run(['$rootScope', '$timeout', '$q', '$location', 'application', 'googleService', 'security', function ($rootScope, $timeout, $q, $location, application, googleService, security) {
+	.run(['$rootScope', '$timeout', '$q', '$location', 'application', 'googleApi', 'security', function ($rootScope, $timeout, $q, $location, application, googleApi, security) {
 	
 		/** @property signed_in */
 			
-		var gapiPromise = googleService.load().then(function(data) {
+		window.security = security;
+			
+		var gapiPromise = googleApi.load().then(function(data) {
 			security.authObject = data;
 		}),
 		

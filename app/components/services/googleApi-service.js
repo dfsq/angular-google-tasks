@@ -35,10 +35,10 @@ angular.module('components.services.googleApi', []).provider('googleApi', functi
 				return deferred.promise;
 			},
 
-			login: function(immediate) {
+			login: function() {
 				var deferred = $q.defer();
 				window.setTimeout(function() {
-					service.checkAuth(immediate, deferred);
+					service.checkAuth(false, deferred);
 				}, 1);
 				return deferred.promise;
 			},

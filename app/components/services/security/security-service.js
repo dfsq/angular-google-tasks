@@ -10,7 +10,7 @@ angular.module('components.services.security').provider('security', {
 		return security.requestGuest();
 	}],
 
-	$get: ['$q', function($q) {
+	$get: ['$q', 'googleApi', function($q, googleApi) {
 
 		var service = {
 			
@@ -21,7 +21,12 @@ angular.module('components.services.security').provider('security', {
 			},
 
 			requestAuthState: function() {
-				return $q.when(service.authObject);
+				if (service.authObject) {
+					return $q.when(service.authObject);
+				}
+				else {
+					return googleApi.login();
+				}
 			},
 
 			requestSignedIn: function() {
