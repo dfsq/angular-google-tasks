@@ -7,9 +7,10 @@
 	<meta name="keywords" content="google tasks, angularjs, application">
 	<meta name="viewport" content="width=device-width">
 	<title>Angular Google Tasks</title>
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700" rel="stylesheet" type="text/css">
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
-	<link rel="stylesheet" href="assets/styles/app.css"/>
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/styles/app.css">
 </head>
 <body ng-controller="appController">
 
@@ -33,7 +34,7 @@
 		</script>
 	</div>
 
-	<div ng-view class="{{routeClassName}}"></div>
+	<div ng-view class="view" ng-class="routeClassName"></div>
 
 	<!-- buildjs: modules -->
 	<script src="bower_components/angular/angular.min.js"></script>

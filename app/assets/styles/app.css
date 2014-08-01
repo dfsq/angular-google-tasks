@@ -1,3 +1,10 @@
+/* Common app styles */
+html, body, .view {
+	height: 100%;
+	font-family: 'Open Sans', sans-serif !important;
+}
+
+
 /* Splash screen */
 .app-loading {
 	position: fixed;
@@ -29,4 +36,16 @@
 
 .app-loading .message .s {
 	background: #EEE;
+}
+
+
+/* Login screen */
+.login-screen {
+	padding-top: 1px;
+	background: #2C3E50;
+	color: #fff;
+	text-align: center;
+}
+.login-screen .container {
+	margin-top: 100px;
 }
