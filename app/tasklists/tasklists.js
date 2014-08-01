@@ -9,6 +9,10 @@ angular.module('tasklists', ['ngRoute'], ['$routeProvider', 'securityProvider', 
 		},
 		onRouteError: {
 			redirectTo: '/login'
+		},
+		page: {
+			className: 'tasklists-screen',
+			title: document.title + ' | Task Lists'
 		}
 	});
 }]);

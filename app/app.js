@@ -11,7 +11,7 @@ angular.module('googleTasks', [
 		googleApiProvider.setConfig({
 			clientId: '421579928051-79o2r8382t52m5tdls381l4rlns6hr95.apps.googleusercontent.com',
 			apiKey: 'AIzaSyCoFGS6BzXCErahLsI8GFsOP-xQ5P7Qc0U',
-			scopes: ['https://www.googleapis.com/auth/tasks']
+			scopes: ['https://www.googleapis.com/auth/tasks', 'https://www.googleapis.com/auth/plus.me']
 		});
 	}])
 
