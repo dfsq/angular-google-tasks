@@ -19,23 +19,25 @@ angular.module('googleTasks', [
 	
 		/** @property signed_in */
 
-		var gapiPromise = googleApi.load().then(function() {
-			return googleApi.login(true).then(function(data) {
-				return security.authObject = data;
-			}, function(data) {
-				return security.authObject = data;
-			});
-		}),
+		var gapiPromise,
+			timeout,
+			routeChangePromise,
+			onRouteChangeSuccessHandler,
+			onRouteChangeSuccess;
+		
+		gapiPromise = googleApi.load(true).then(function(data) {
+			return security.setAuthObject(data);
+		});	
 
 		// Splash screen will be visible at least 500ms
-		timeout = $timeout(angular.noop, 1000, false),
+		timeout = $timeout(angular.noop, 500, false);
 			
-		routeChangePromise = $q.defer(),
+		routeChangePromise = $q.defer();
 
 		onRouteChangeSuccessHandler = function() {
 			routeChangePromise.resolve();
 			onRouteChangeSuccess();
-		},
+		};
 
 		onRouteChangeSuccess = $rootScope.$on('$routeChangeSuccess', onRouteChangeSuccessHandler);
 	

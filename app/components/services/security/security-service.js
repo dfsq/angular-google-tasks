@@ -18,6 +18,11 @@ angular.module('components.services.security').provider('security', {
 			
 			authObject: null,
 
+			setAuthObject: function(data) {
+				service.authObject = data;
+				return service.authObject;
+			},
+			
 			isSignedIn: function() {
 				return this.authObject && this.authObject.status && this.authObject.status.signed_in;
 			},

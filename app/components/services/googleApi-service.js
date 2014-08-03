@@ -16,9 +16,10 @@ angular.module('components.services.googleApi', []).provider('googleApi', functi
 		var service = {
 			/**
 			 * Load client library.
+			 * @param loginCheck {boolean}
 			 * @returns {promise}
 			 */
-			load: function() {
+			load: function(loginCheck) {
 				
 				var deferred = $q.defer();
 				
@@ -31,6 +32,16 @@ angular.module('components.services.googleApi', []).provider('googleApi', functi
 				var script = document.createElement('script');
 				script.src = 'https://apis.google.com/js/client.js?onload=gapiLoaded';
 				document.body.appendChild(script);
+				
+				if (loginCheck) {
+					return deferred.promise.then(function() {
+						return service.login(true).then(function(data) {
+							return data;
+						}, function(data) {
+							return data;
+						});
+					});
+				}
 				
 				return deferred.promise;
 			},
