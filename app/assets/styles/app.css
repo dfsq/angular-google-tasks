@@ -14,8 +14,9 @@ html, body, .view {
 	width: 100%;
 	height: 100%;
 	background: #222;
+	-webkit-transition: opacity 1s ease;
+	transition: opacity 1s ease;
 }
-
 .app-loading .message {
 	position: absolute;
 	top: 30%;
@@ -23,7 +24,6 @@ html, body, .view {
 	text-align: center;
 	color: #CCC;
 }
-
 .app-loading .message i {
 	display: inline-block;
 	margin-right: 4px;
@@ -33,9 +33,15 @@ html, body, .view {
 	-webkit-transition: background .2s linear;
 	transition: background .2s linear;
 }
-
 .app-loading .message .s {
 	background: #EEE;
+}
+.app-loading.ng-hide {
+	display: block !important;
+	opacity: 0;
+}
+.app-loading.ng-hide .message {
+	display: none;
 }
 
 
@@ -60,4 +66,9 @@ html, body, .view {
 	position: absolute;
 	bottom: -20px;
 	margin-left: -8px;
+}
+.login-screen .btn-about {
+	position: absolute;
+	top: 0;
+	right: 0;
 }

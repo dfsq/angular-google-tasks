@@ -23,7 +23,12 @@
 				dots = splash.querySelectorAll(".message i"),
 				i = 0, l = dots.length, tm,
 				next = function () {
-					if (/ng-hide/.test(splash.className)) clearTimeout(tm), splash.parentNode.removeChild(splash);
+					if (/ng-hide/.test(splash.className)) {
+						clearTimeout(tm);
+						setTimeout(function() { 
+							splash.parentNode.removeChild(splash) 
+						}, 1000);
+					}
 					else {
 						i = ++i % (l + 1);
 						for (var a = 0; a < (i || l);) dots[a++].className = i ? "s" : "";
