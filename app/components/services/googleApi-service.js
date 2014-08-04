@@ -33,6 +33,10 @@ angular.module('components.services.googleApi', []).provider('googleApi', functi
 				script.src = 'https://apis.google.com/js/client.js?onload=gapiLoaded';
 				document.body.appendChild(script);
 				
+				if (typeof loginCheck === 'undefined') {
+					loginCheck = true;
+				}
+				
 				if (loginCheck) {
 					return deferred.promise.then(function() {
 						return service.login(true).then(function(data) {
