@@ -27,7 +27,7 @@ angular.module('googleTasks', [
 		
 		gapiPromise = googleApi.load().then(function(data) {
 			return security.setAuthObject(data);
-		});	
+		});
 
 		// Splash screen will be visible at least 500ms
 		timeout = $timeout(angular.noop, 500, false);

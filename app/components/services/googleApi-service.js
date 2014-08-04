@@ -78,5 +78,5 @@ angular.module('components.services.googleApi', []).provider('googleApi', functi
 		};
 		
 		return service;
-	}]
+	}];
 });
