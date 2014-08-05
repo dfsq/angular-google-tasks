@@ -1,1 +1,8 @@
 <h2>Task lists</h2>
+
+<ul class="task-lists">
+	<li ng-repeat="taskList in taskLists">
+		<a href="#/tasklists/{{taskList.id}}">{{taskList.title}}</a>
+		<div>{{taskList.updated | date:'short' }}</div>
+	</li>
+</ul>

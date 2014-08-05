@@ -72,3 +72,19 @@ html, body, .view {
 	top: 0;
 	right: 0;
 }
+
+
+/* Tasklists screen */
+.task-lists li {
+	list-style: none;
+	padding: 10px;
+	border: 1px #DDD solid;
+	width: 200px;
+	height: 200px;
+	display: inline-block;
+	vertical-align: top;
+	margin: 0 20px 20px 0;
+	color: #FFF;
+	font-size: 18px;
+	background: #8C9899;
+}
