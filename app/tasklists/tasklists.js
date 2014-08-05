@@ -1,9 +1,8 @@
 'use strict';
 
-angular.module('tasklists', ['ngRoute'], ['$routeProvider', 'securityProvider', function($routeProvider, securityProvider) {
-	$routeProvider.when('/tasklists', {
-		templateUrl: 'tasklists/tasklists.html',
-		controller: 'tasklistsController',
+angular.module('tasklists', ['ngRoute'], ['routeFilterProvider', 'securityProvider', function(routeFilterProvider, securityProvider) {
+
+	routeFilterProvider.registerFilter('/tasklists:path?', {
 		resolve: {
 			auth: securityProvider.requestSignedIn
 		},
@@ -14,5 +13,15 @@ angular.module('tasklists', ['ngRoute'], ['$routeProvider', 'securityProvider', 
 			className: 'tasklists-screen',
 			title: document.title + ' | Task Lists'
 		}
+	});
+
+	routeFilterProvider.when('/tasklists', {
+		templateUrl: 'tasklists/tasklists.html',
+		controller: 'tasklistsController'
+	});
+
+	routeFilterProvider.when('/tasklists/:id', {
+		templateUrl: 'tasklists/tasks.html',
+		controller: 'tasksController'
 	});
 }]);
