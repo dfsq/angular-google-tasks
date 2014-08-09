@@ -75,10 +75,34 @@ html, body, .view {
 
 
 /* Tasklists screen */
+.tasklists-screen {
+	background: url(../images/bg-dark.png) repeat 0 0;
+}
+.tasklists-screen header {
+	padding: 15px 0 10px;
+}
+.tasklists-screen header h2 {
+	position: absolute;
+	top: -6px;
+	color: #555;
+}
+.tasklists-screen header .upcoming {
+	margin-left: 45px;
+}
+.tasklists-screen header .upcoming li a {
+	padding: 10px;
+}
+.tasklists-screen header .upcoming li a:hover {
+	border-bottom: 2px #FFF solid;
+	background: none;
+	border-radius: 0;
+	padding-bottom: 5px;
+	color: #FFF;
+}
+
 .task-lists li {
 	list-style: none;
 	padding: 10px;
-	border: 1px #DDD solid;
 	width: 200px;
 	height: 200px;
 	display: inline-block;
@@ -86,5 +110,12 @@ html, body, .view {
 	margin: 0 20px 20px 0;
 	color: #FFF;
 	font-size: 18px;
-	background: #8C9899;
+	background: rgba(0, 0, 0, .3);
+}
+.task-lists li:hover {
+	background: rgba(0, 0, 0, .5);
+}
+.task-lists .info {
+	font-size: .7em;
+	color: #AAA;
 }

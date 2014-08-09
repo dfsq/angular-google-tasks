@@ -1,8 +1,18 @@
-<h2>Task lists</h2>
+<div class="container">
+	
+	<header>
+		<h2>up:</h2>
+		<ul class="nav nav-pills upcoming">
+			<li><a href="#">Get grocery</a></li>
+			<li><a href="#">Pick up Thomas</a></li>
+			<li><a href="#">Call Mike</a></li>
+		</ul>
+	</header>
 
-<ul class="task-lists">
-	<li ng-repeat="taskList in taskLists">
-		<a href="#/tasklists/{{taskList.id}}">{{taskList.title}}</a>
-		<div>{{taskList.updated | date:'short' }}</div>
-	</li>
-</ul>
+	<ul class="task-lists list-unstyled">
+		<li ng-repeat="taskList in taskLists">
+			<a href="#/tasklists/{{taskList.id}}">{{taskList.title}}</a>
+			<div class="info">{{taskList.updated | date:'short' }}</div>
+		</li>
+	</ul>
+</div>

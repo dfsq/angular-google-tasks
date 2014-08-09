@@ -5,5 +5,6 @@ angular.module('components.services', [
 	'components.services.googleApi',
 	'components.services.tasks',
 	'components.services.security',
-	'components.services.routeFilter'
+	'components.services.routeFilter',
+	'components.services.cache'
 ]);
