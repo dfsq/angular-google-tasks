@@ -1,24 +1,30 @@
 'use strict';
 
-/* TODO: think of better service organization, maybe resources? */
-angular.module('components.services.tasks', []).factory('tasks', ['$http', function($http) {
+angular.module('components.services.tasks', []).factory('tasks', ['$http', 'cache', function($http, cache) {
 	
-	var basePath = 'https://www.googleapis.com/tasks/v1';
-	
+	var basePath = 'https://www.googleapis.com/tasks/v1',
+		params = {
+			params: {access_token: gapi.auth.getToken().access_token}
+		};
+
 	return {
+		
+		/** @property items */
+			
 		getTaskLists: function() {
-			var oauthToken = gapi.auth.getToken();
-			return $http.get(basePath + '/users/@me/lists', {
-				params: {access_token: oauthToken.access_token}
-			})
-			.then(function(response) { return response.data.items; })
+			return cache('tasklists', function() {
+				return $http.get(basePath + '/users/@me/lists', params).then(function(response) {
+					return response.data.items; 
+				});
+			});
 		},
+		
 		getTasks: function(tasklist) {
-			var oauthToken = gapi.auth.getToken();
-			return $http.get(basePath + '/lists/' + tasklist + '/tasks', {
-				params: {access_token: oauthToken.access_token}
-			})
-			.then(function(response) { return response.data.items; })
+			return cache('tasks' + tasklist, function() {
+				return $http.get(basePath + '/lists/' + tasklist + '/tasks', params).then(function(response) {
+					return response.data.items; 
+				});
+			});
 		}
 	};
 }]);
