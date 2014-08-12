@@ -7,5 +7,7 @@
 		"angular-resource": "~1.2.20",
 		"bootstrap": "~3.2.0"
 	},
-	"devDependencies": {}
+	"devDependencies": {
+		"angular-mocks": "~1.2.21"
+	}
 }
