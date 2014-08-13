@@ -4,7 +4,8 @@ angular.module('googleTasks', [
 	'ngRoute',
 	'components.services',
 	'login',
-	'tasklists'
+	'tasklists',
+	'tasks'
 ])
 
 	.config(['googleApiProvider', function (googleApiProvider) {

@@ -1,7 +1,13 @@
-'use strict';
+(function() {
+	'use strict';
 
-angular.module('tasklists').controller('tasklistsController', ['$scope', 'tasks', function($scope, tasks) {
-	tasks.getTaskLists().then(function(data) {
-		$scope.taskLists = data;
-	});
-}]);
+	function tasklistsController($scope, tasks) {
+		tasks.getTaskLists().then(function(data) {
+			$scope.taskLists = data;
+		});
+	}
+
+	tasklistsController.$inject = ['$scope', 'tasks'];
+	
+	angular.module('tasklists').controller('tasklistsController', tasklistsController);
+})();
