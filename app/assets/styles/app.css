@@ -128,3 +128,18 @@ html, body, .view {
 	font-size: .7em;
 	color: #AAA;
 }
+
+
+/* Tasks screen */
+.tasks-screen {
+	background: url(../images/bg-dark.png) repeat 0 0;
+}
+.tasks-screen header {
+	padding: 15px 0;
+	min-height: 67px;
+}
+.tasks-screen header h2 {
+	color: #555;
+	margin: -1px 0 0;
+	float: left;
+}

@@ -2,6 +2,9 @@
 	'use strict';
 
 	function tasksController($scope, $routeParams, tasks) {
+		
+		$scope.title = 'Some title';
+		
 		tasks.getTasks($routeParams.id).then(function(data) {
 			$scope.tasks = data;
 		});

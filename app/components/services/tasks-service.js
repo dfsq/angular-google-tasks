@@ -14,7 +14,7 @@ angular.module('components.services.tasks', []).factory('tasks', ['$http', 'cach
 		getTaskLists: function() {
 			return cache('tasklists', function() {
 				return $http.get(basePath + '/users/@me/lists', params).then(function(response) {
-					return response.data.items; 
+					return response.data.items;
 				});
 			});
 		},
@@ -22,7 +22,7 @@ angular.module('components.services.tasks', []).factory('tasks', ['$http', 'cach
 		getTasks: function(tasklist) {
 			return cache('tasks' + tasklist, function() {
 				return $http.get(basePath + '/lists/' + tasklist + '/tasks', params).then(function(response) {
-					return response.data.items; 
+					return response.data.items;
 				});
 			});
 		}
