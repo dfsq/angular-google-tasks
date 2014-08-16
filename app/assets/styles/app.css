@@ -139,7 +139,10 @@ html, body, .view {
 	min-height: 67px;
 }
 .tasks-screen header h2 {
-	color: #555;
+	color: #428BCA;
 	margin: -1px 0 0;
 	float: left;
+}
+.tasks-screen ol li {
+	color: #EEE;
 }

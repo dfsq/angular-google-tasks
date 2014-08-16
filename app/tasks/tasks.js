@@ -2,7 +2,7 @@
 	'use strict';
 	
 	function tasks(routeFilterProvider) {
-		routeFilterProvider.when('/tasklists/:id', {
+		routeFilterProvider.when('/tasklists/:title/:id', {
 			templateUrl: 'tasks/tasks.html',
 			controller: 'tasksController',
 			page: {

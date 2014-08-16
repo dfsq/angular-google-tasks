@@ -12,7 +12,7 @@
 
 	<ul class="task-lists list-unstyled">
 		<li ng-repeat="taskList in taskLists">
-			<a href="#/tasklists/{{taskList.id}}">{{taskList.title}}</a>
+			<a href="#/tasklists/{{taskList.title}}/{{taskList.id}}">{{taskList.title}}</a>
 			<div class="info">{{taskList.updated | date:'short' }}</div>
 		</li>
 	</ul>

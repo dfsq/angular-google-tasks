@@ -3,7 +3,7 @@
 
 	function tasksController($scope, $routeParams, tasks) {
 		
-		$scope.title = 'Some title';
+		$scope.title = $routeParams.title;
 		
 		tasks.getTasks($routeParams.id).then(function(data) {
 			$scope.tasks = data;
