@@ -45,6 +45,16 @@
 						return groupTasks(response.data.items);
 					});
 				});
+			},
+
+			/**
+			 * Moves the specified task to another position in the task list.
+			 * This can include putting it as a child task under a new parent and/or move it to a different position among its sibling tasks.
+			 * POST /lists/tasklist/tasks/task/move
+			 * @see https://developers.google.com/google-apps/tasks/v1/reference/tasks/move
+			 */
+			moveTask: function(tasklistId, taskId) {
+				return $http(basePath + '/lists/' + tasklistId + '/tasks/' + taskId + '/move', params);
 			}
 		};
 	}

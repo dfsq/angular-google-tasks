@@ -4,7 +4,14 @@
 		<h2>{{title}}</h2>
 	</header>
 
-	<ul class="list-unstyled">
-		<li ng-repeat="task in tasks">{{task.title}}</li>
+	<ul class="list">
+		<li ng-repeat="task in tasks" ng-include="'task-item.html'"></li>
 	</ul>
 </div>
+
+<script type="text/ng-template" id="task-item.html" class="html">
+	<div class="task">{{task.title}}</div>
+	<ul class="list" ng-if="task.children.length">
+		<li ng-repeat="task in task.children" ng-include="'task-item.html'"></li>
+	</ul>
+</script>
