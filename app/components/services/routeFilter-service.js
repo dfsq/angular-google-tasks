@@ -28,7 +28,6 @@ angular.module('components.services.routeFilter', ['ngRoute']).provider('routeFi
 		registeredFilters[path] = rule;
 	};
 
-	// TODO: deep extend is needed here
 	this.when = function (path, config) {
 		config = angular.extend({}, getExtendedConfig(path), config);
 		$routeProvider.when(path, config);

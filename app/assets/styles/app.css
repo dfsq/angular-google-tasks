@@ -79,7 +79,7 @@ html, body, .view {
 	background: url(../images/bg-dark.png) repeat 0 0;
 }
 .tasklists-screen header {
-	padding: 15px 0;
+	padding: 25px 0;
 	min-height: 67px;
 }
 .tasklists-screen header h2 {
@@ -132,17 +132,58 @@ html, body, .view {
 
 /* Tasks screen */
 .tasks-screen {
-	background: url(../images/bg-dark.png) repeat 0 0;
+	background: url(../images/bg-gray.png) repeat 0 0;
 }
 .tasks-screen header {
-	padding: 15px 0;
+	padding: 25px 0;
 	min-height: 67px;
 }
-.tasks-screen header h2 {
-	color: #428BCA;
+.tasks-screen header h1 {
+	color: #A24973; /* colors vary, configurable */
 	margin: -1px 0 0;
-	float: left;
+}
+.tasks-screen .stats {
+	color: #5693E2;
+	font-size: 18px;
+}
+.tasks-screen .stats span {
+	color: #08C;
+	padding: 0 0 5px 5px;
+	display: inline-block;
+}
+
+
+.tasks-screen .list {
+	padding: 0;
+}
+.tasks-screen .list > li:first-child {
+	padding-top: 10px;
 }
 .tasks-screen ul li {
-	color: #EEE;
+	color: #333;
+	padding: 0 0 10px;
+	font-size: 20px;
+}
+.tasks-screen li {
+	list-style-type: none;
+	border-left: 2px solid #5693e2;
+	margin-left: 1em;
+}
+.tasks-screen li div {
+	padding-left: 2em;
+	position: relative;
+}
+.tasks-screen li div::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: -2px;
+	bottom: 50%;
+	width: 1.7em;
+	border: 2px solid #5693e2;
+	border-top: 0 none transparent;
+	border-right: 0 none transparent;
+}
+.tasks-screen ul > li:last-child {
+	border-left: 2px solid transparent;
 }
