@@ -152,12 +152,17 @@ html, body, .view {
 	display: inline-block;
 }
 
-
 .tasks-screen .list {
 	padding: 0;
 }
-.tasks-screen .list > li:first-child {
+.tasks-screen .list ul {
+	padding-left: 1.1em;
+}
+.tasks-screen .list ul li:first-child {
 	padding-top: 10px;
+}
+.tasks-screen .list ul li:last-child {
+	padding-bottom: 0;
 }
 .tasks-screen ul li {
 	color: #333;
