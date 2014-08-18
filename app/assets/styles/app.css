@@ -119,10 +119,21 @@ html, body, .view {
 	margin: 0 20px 20px 0;
 	color: #FFF;
 	font-size: 18px;
-	background: rgba(0, 0, 0, .3);
+	background: rgba(185, 231, 176, 0.3);
+	position: relative;
+}
+.task-lists li > a {
+	font-size: 28px;
+	word-break: break-all;
+}
+.task-lists li > .stats {
+	color: #DDD;
+	position: absolute;
+	bottom: 0;
+	right: 15px;
 }
 .task-lists li:hover {
-	background: rgba(0, 0, 0, .5);
+	background: rgba(226, 83, 56, 0.32);
 }
 .task-lists .info {
 	font-size: .7em;
@@ -158,6 +169,7 @@ html, body, .view {
 .tasks-screen .list ul {
 	padding-left: 1.1em;
 }
+.tasks-screen .list > li:first-child,
 .tasks-screen .list ul li:first-child {
 	padding-top: 10px;
 }
@@ -181,7 +193,7 @@ html, body, .view {
 .tasks-screen li div::before {
 	content: '';
 	position: absolute;
-	top: 0;
+	top: -10px;
 	left: -2px;
 	bottom: 50%;
 	width: 1.7em;

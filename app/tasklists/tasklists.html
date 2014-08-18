@@ -2,8 +2,8 @@
 	
 	<header class="clearfix">
 		<h2>up:</h2>
-		<div class="no-upcoming">no upcoming tasks yet, do something!</div>
-		<ul class="nav nav-pills upcoming hidden">
+		<div class="no-upcoming hidden">no upcoming tasks yet, do something!</div>
+		<ul class="nav nav-pills upcoming">
 			<li><a href="#">Get grocery</a></li>
 			<li><a href="#">Pick up Thomas</a></li>
 			<li><a href="#">Call Mike</a></li>
@@ -14,6 +14,7 @@
 		<li ng-repeat="taskList in taskLists">
 			<a href="#/tasklists/{{taskList.title}}/{{taskList.id}}">{{taskList.title}}</a>
 			<div class="info">{{taskList.updated | date:'short' }}</div>
+			<h2 class="stats">+9/-2</h2>
 		</li>
 	</ul>
 </div>
