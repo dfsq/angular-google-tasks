@@ -26,7 +26,7 @@ angular.module('googleTasks', [
 			onRouteChangeSuccessHandler,
 			onRouteChangeSuccess;
 
-		gapiPromise = googleApi.load().then(function (data) {
+		gapiPromise = googleApi.init().then(function (data) {
 			return security.setAuthObject(data);
 		});
 
