@@ -1,6 +1,7 @@
 'use strict';
 
 angular.module('googleTasks').controller('appController', ['$scope', '$route', 'application', function($scope, $route, application) {
+
 	application.ready(function () {
 		$scope.appReady = true;
 	});
@@ -11,4 +12,8 @@ angular.module('googleTasks').controller('appController', ['$scope', '$route', '
 			document.title = $route.current.page.title;
 		}
 	});
+
+	$scope.back = function() {
+		window.history.back();
+	};
 }]);

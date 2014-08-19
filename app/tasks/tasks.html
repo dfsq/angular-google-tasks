@@ -1,7 +1,10 @@
 <div class="container">
 	
 	<header class="clearfix">
-		<h1>{{title}}</h1>
+		<h1>
+			<a ng-click="back()" class="back"><img src="assets/images/arrow-left.png" alt="" /></a>
+			{{title}}
+		</h1>
 	</header>
 
 	<div class="stats">
@@ -14,7 +17,10 @@
 </div>
 
 <script type="text/ng-template" id="task-item.html" class="html">
-	<div class="task">{{task.title}}</div>
+	<div class="task">
+		{{task.title}}
+		<span class="up">↑</span>
+	</div>
 	<ul ng-if="task.children.length">
 		<li ng-repeat="task in task.children" ng-include="'task-item.html'"></li>
 	</ul>
