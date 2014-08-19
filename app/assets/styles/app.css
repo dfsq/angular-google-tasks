@@ -20,10 +20,10 @@ html, body, .view {
 }
 .view.slide.ng-enter,
 .view.slide.ng-leave {
-	-webkit-transition: all 1s linear;
-	-moz-transition: all 1s linear;
-	-o-transition: all 1s linear;
-	transition: all 1s linear;
+	-webkit-transition: all .6s ease;
+	-moz-transition: all .6s ease;
+	-o-transition: all .6s ease;
+	transition: all .6s ease;
 }
 .view.slide.ng-enter {
 	left: 100%;
