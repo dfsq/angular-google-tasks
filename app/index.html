@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/styles/app.css">
 </head>
-<body ng-controller="appController">
+<body ng-controller="appController" back-transition>
 
 	<div class="app-loading" ng-hide="appReady">
 		<div class="message">
@@ -58,6 +58,10 @@
 	<script src="components/services/cache-service.js"></script>
 	<script src="components/services/security/security.js"></script>
 	<script src="components/services/security/security-service.js"></script>
+
+	<!-- directives -->
+	<script src="components/directives/directives.js"></script>
+	<script src="components/directives/backTransition-directive.js"></script>
 
 	<!-- login module -->
 	<script src="login/login.js"></script>

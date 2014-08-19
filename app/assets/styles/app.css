@@ -20,10 +20,10 @@ html, body, .view {
 }
 .view.slide.ng-enter,
 .view.slide.ng-leave {
-	-webkit-transition: all 1s ease;
-	-moz-transition: all 1s ease;
-	-o-transition: all 1s ease;
-	transition: all 1s ease;
+	-webkit-transition: all 1s linear;
+	-moz-transition: all 1s linear;
+	-o-transition: all 1s linear;
+	transition: all 1s linear;
 }
 .view.slide.ng-enter {
 	left: 100%;
@@ -47,7 +47,7 @@ html, body, .view {
 .reverse .view.slide.ng-leave {
 	left: 0;
 }
-.reverse .page.slide.ng-leave-active {
+.reverse .view.slide.ng-leave-active {
 	left: 100%;
 }
 
