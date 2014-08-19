@@ -15,7 +15,7 @@
 			templateUrl: 'tasklists/tasklists.html',
 			controller: 'tasklistsController',
 			page: {
-				className: 'tasklists-screen',
+				className: 'tasklists-screen slide',
 				title: 'Task Lists | ' + document.title
 			}
 		});

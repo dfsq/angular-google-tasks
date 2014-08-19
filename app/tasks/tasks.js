@@ -6,7 +6,7 @@
 			templateUrl: 'tasks/tasks.html',
 			controller: 'tasksController',
 			page: {
-				className: 'tasks-screen',
+				className: 'tasks-screen slide',
 				title: 'Tasks | ' + document.title
 			}
 		});

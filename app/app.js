@@ -2,6 +2,7 @@
 
 angular.module('googleTasks', [
 	'ngRoute',
+	'ngAnimate',
 	'components.services',
 	'login',
 	'tasklists',
