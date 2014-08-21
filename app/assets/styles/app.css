@@ -16,13 +16,10 @@ html, body, .view {
 	left: 0;
 	top: 0;
 	width: 100%;
-	height: 100%;
 }
 .view.slide.ng-enter,
 .view.slide.ng-leave {
 	-webkit-transition: all .8s ease;
-	-moz-transition: all .8s ease;
-	-o-transition: all .8s ease;
 	transition: all .8s ease;
 }
 .view.slide.ng-enter {
@@ -255,15 +252,6 @@ header .back img {
 .tasks-screen li .task {
 	padding-left: 2em;
 	position: relative;
-}
-.tasks-screen li .task .up {
-	display: none;
-}
-.tasks-screen li .task:hover .up {
-	display: inline-block;
-	margin-left: 10px;
-	color: #E25656;
-	cursor: pointer;
 }
 .tasks-screen li div::before {
 	content: '';
