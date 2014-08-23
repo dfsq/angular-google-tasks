@@ -14,6 +14,6 @@
 	}
 
 	loginController.$inject = ['$scope', '$location', 'googleApi', 'security'];
-	
-	angular.module('login').controller('loginController', loginController);	
+
+	angular.module('login').controller('loginController', loginController);
 })();
