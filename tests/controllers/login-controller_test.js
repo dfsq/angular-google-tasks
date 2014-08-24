@@ -7,10 +7,11 @@ describe('Login controller', function() {
 		$scope,
 		$location,
 		$q,
+		authObject = {status: {signed_in: true}},
 		googleApi = {
 			login: function() {
 				var deferred = $q.defer();
-				deferred.resolve();
+				deferred.resolve(authObject);
 				return deferred.promise;
 			}
 		},
@@ -39,10 +40,17 @@ describe('Login controller', function() {
 		expect($scope.login).toBeDefined();
 	});
 
-	it('should set security.authObject afted login', function() {
+	it('should set security.authObject after login', function() {
 		expect(security.authObject).toBe(null);
 		$scope.login();
-		expect(security.authObject).toNotBe(null);
+		$rootScope.$digest();
+		expect(security.authObject).toEqual(authObject);
+	});
+
+	it('should change $location path to "tasklists" after login', function() {
+		$scope.login();
+		$rootScope.$digest();
+		expect($location.path()).toBe('/tasklists');
 	});
 
 });

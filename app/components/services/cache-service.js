@@ -21,12 +21,10 @@
 			return cacheData[key];
 		};
 
-		window.cache = cacheFunction;
-
 		return cacheFunction;
 	}
-	
+
 	cache.$inject = ['$q'];
-	
+
 	angular.module('components.services.cache', []).factory('cache', cache);
 })();

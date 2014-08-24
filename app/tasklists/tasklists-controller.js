@@ -8,6 +8,6 @@
 	}
 
 	tasklistsController.$inject = ['$scope', 'tasks'];
-	
+
 	angular.module('tasklists').controller('tasklistsController', tasklistsController);
 })();
