@@ -11,20 +11,10 @@ module.exports = function(config) {
 			'app/bower_components/angular-mocks/angular-mocks.js',
 
 			'app/app.js',
-			'app/app-controller.js',
-			'app/components/services/services.js',
-			'app/components/services/*-service.js',
-			'app/components/services/security/security.js',
-			'app/components/services/security/*-service.js',
-			'app/components/directives/directives.js',
-			'app/components/directives/*-directive.js',
-			'app/login/login.js',
-			'app/login/login-controller.js',
-			'app/tasklists/tasklists.js',
-			'app/tasklists/tasklists-controller.js',
-			'app/tasks/tasks.js',
-			'app/tasks/tasks-controller.js',
-			'tests/**/*.js'
+			'app/!(bower_components)/**/!(*-*).js',
+			'app/**/*-+(controller|directive|service).js',
+
+			'app/**/*_test.js'
 		],
 		exclude: [],
 		plugins: [

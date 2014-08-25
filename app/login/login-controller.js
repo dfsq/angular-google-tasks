@@ -4,7 +4,6 @@
 	function loginController($scope, $location, googleApi, security) {
 		$scope.login = function() {
 			googleApi.login().then(function(data) {
-				console.log('ok', data);
 				security.authObject = data;
 				$location.path('/tasklists');
 			}, function(data) {

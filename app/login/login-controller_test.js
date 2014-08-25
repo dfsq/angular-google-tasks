@@ -44,7 +44,7 @@ describe('Login controller', function() {
 		expect(security.authObject).toBe(null);
 		$scope.login();
 		$rootScope.$digest();
-		expect(security.authObject).toEqual(authObject);
+		expect(security.authObject).toBe(authObject);
 	});
 
 	it('should change $location path to "tasklists" after login', function() {

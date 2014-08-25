@@ -8,12 +8,14 @@
 	},
 	"dependencies": {},
 	"devDependencies": {
-		"gulp": "^3.8.6",
-		"gulp-karma": "0.0.4",
+
 		"karma": "^0.12.19",
 		"karma-cli": "^0.0.4",
 		"karma-jasmine": "~0.2.0",
-		"karma-phantomjs-launcher": "^0.1.4"
+		"karma-phantomjs-launcher": "^0.1.4",
+
+		"grunt": "~0.4.1",
+		"grunt-contrib-concat": "~0.3.0"
 	},
 	"scripts": {
 		"test": "gulp test"
