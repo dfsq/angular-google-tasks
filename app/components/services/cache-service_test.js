@@ -19,17 +19,15 @@ describe('Cache service', function() {
 				return $q.when(tasksObject);
 			}
 		};
-		spyOn(tasksService, 'getTasks').andCallThrough();
+		spyOn(tasksService, 'getTasks').and.callThrough();
 	}));
 
 
-	it('should have cache undefined before the first request', function() {
-		expect(cacheService.get('tasks:123456')).toBeUndefined();
+	it('should have cache undefined at first', function() {
+		expect(cacheService.get('tasks:123')).toBeUndefined();
 	});
 
 	it('should make request only once for noncached request and populate cache', function() {
-
-		expect(cacheService.get('tasks:123')).toBeUndefined();
 
 		// Get tasks fo for the first time
 		cacheService('tasks:123', function() {
@@ -39,7 +37,7 @@ describe('Cache service', function() {
 
 		expect(cacheService.get('tasks:123')).toBe(tasksObject);
 		expect(tasksService.getTasks).toHaveBeenCalled();
-		expect(tasksService.getTasks.callCount).toBe(1);
+		expect(tasksService.getTasks.calls.count()).toBe(1);
 
 		// Get tasks one more time'
 		cacheService('tasks:123', function() {
@@ -48,7 +46,7 @@ describe('Cache service', function() {
 		$rootScope.$digest();
 
 		expect(cacheService.get('tasks:123')).toBe(tasksObject);
-		expect(tasksService.getTasks.callCount).toBe(1);
+		expect(tasksService.getTasks.calls.count()).toBe(1);
 
 	});
 
