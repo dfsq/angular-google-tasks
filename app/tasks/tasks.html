@@ -1,5 +1,5 @@
 <div class="container">
-	
+
 	<header class="clearfix">
 		<h1>
 			<a ng-click="back()" class="back"><img src="assets/images/arrow-left.png" alt="" /></a>
@@ -19,8 +19,10 @@
 <script type="text/ng-template" id="task-item.html" class="html">
 	<div class="task">
 		{{task.title}}
-		<span class="up">&#10138;</span>
-		<span class="star">&#10033;</span>
+		<span class="actions">
+			<span class="up" title="pin task">&#10138;</span>
+			<span class="settings" title="settings">&#9881;</span>
+		</span>
 	</div>
 	<ul ng-if="task.children.length">
 		<li ng-repeat="task in task.children" ng-include="'task-item.html'"></li>

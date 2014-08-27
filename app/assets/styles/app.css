@@ -49,8 +49,6 @@ html, body, .view {
 }
 
 
-
-
 /* Splash screen */
 .app-loading {
 	position: fixed;
@@ -61,7 +59,7 @@ html, body, .view {
 	height: 100%;
 	background: #354B60;
 	-webkit-transition: opacity 1s ease;
-	transition: top .5s ease;
+	transition: opacity 1s ease;
 }
 .app-loading .message {
 	position: absolute;
@@ -84,7 +82,7 @@ html, body, .view {
 }
 .app-loading.ng-hide {
 	display: block !important;
-	top: -100%;
+	opacity: 0;
 }
 .app-loading.ng-hide .message {
 	display: none;
@@ -266,4 +264,8 @@ header .back img {
 }
 .tasks-screen ul > li:last-child {
 	border-left: 2px solid transparent;
+}
+
+.tasks-screen li .task .actions span {
+	cursor: pointer;
 }
