@@ -18,7 +18,12 @@
 
 <script type="text/ng-template" id="task-item.html" class="html">
 	<div class="task">
-		{{task.title}}
+		<input type="checkbox" class="check"  id="check-{{$id}}"/>
+		<label for="check-{{$id}}">
+			<img src="assets/images/check-unchecked.png" />
+			<img src="assets/images/check-checked.png" />
+		</label>
+		<span class="title">{{task.title}}</span>
 		<span class="actions">
 			<span class="up" title="pin task">&#10138;</span>
 			<span class="settings" title="settings">&#9881;</span>

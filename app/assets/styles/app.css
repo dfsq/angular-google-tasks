@@ -269,3 +269,23 @@ header .back img {
 .tasks-screen li .task .actions span {
 	cursor: pointer;
 }
+
+
+.tasks-screen .task .check,
+.tasks-screen .task .check + label > * {
+	display: none;
+	vertical-align: baseline;
+	cursor: pointer;
+}
+.tasks-screen .task .check + label > img:first-child {
+	display: inline;
+}
+.tasks-screen .task .check:checked + label > img {
+	display: none;
+}
+.tasks-screen .task .check:checked + label > img + img {
+	display: inline;
+}
+.tasks-screen .task .check:checked + label + .title {
+	text-decoration: line-through;
+}
