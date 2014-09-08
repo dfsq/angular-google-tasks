@@ -214,6 +214,14 @@ header .back img {
 	color: #A24973; /* colors vary, configurable */
 	margin: -1px 0 0;
 }
+
+.tasks-screen header h1 .actions {
+	display: inline-block;
+}
+.tasks-screen header h1 .actions a {
+	cursor: pointer;
+}
+
 .tasks-screen .stats {
 	color: #5693E2;
 	font-size: 18px;
