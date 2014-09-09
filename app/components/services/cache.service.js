@@ -21,6 +21,10 @@
 			return cacheData[key];
 		};
 
+		cacheFunction.clear = function(key) {
+			delete cacheData[key];
+		};
+
 		return cacheFunction;
 	}
 
