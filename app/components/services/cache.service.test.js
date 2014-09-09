@@ -50,4 +50,18 @@ describe('Cache service', function() {
 
 	});
 
+	it('should clear cache', function() {
+
+		// Get tasks fo for the first time
+		cacheService('tasks:123', function() {
+			return tasksService.getTasks();
+		});
+		$rootScope.$digest();
+
+		expect(cacheService.get('tasks:123')).toBe(tasksObject);
+
+		cacheService.clear('tasks:123');
+		expect(cacheService.get('tasks:123')).toBeUndefined();
+	});
+
 });
