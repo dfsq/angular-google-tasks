@@ -3,7 +3,6 @@
 angular.module('googleTasks', [
 	'ngRoute',
 	'ngAnimate',
-	'uiUtils',
 	'components.services',
 	'components.directives',
 	'login',

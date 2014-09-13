@@ -1,13 +1,11 @@
 (function() {
 	'use strict';
 
-	function tasksController($scope, $routeParams, cssModal, cache, tasks) {
+	function tasksController($scope, $routeParams, tasks) {
 
 		$scope.title = $routeParams.title;
 
 		$scope.addTask = function() {
-
-			cssModal.open();
 
 //			tasks.createTask($routeParams.id, {title: 'ONE MORE TEST'}).then(function() {
 //				cache.clear('tasks' + $routeParams.id);
@@ -24,7 +22,7 @@
 		loadTasks();
 	}
 
-	tasksController.$inject = ['$scope', '$routeParams', 'cssModal', 'cache', 'tasks'];
+	tasksController.$inject = ['$scope', '$routeParams', 'tasks'];
 
 	angular.module('tasks').controller('tasksController', tasksController);
 })();
