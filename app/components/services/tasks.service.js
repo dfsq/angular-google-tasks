@@ -39,7 +39,10 @@
 				});
 			},
 
-			getTasks: function(tasklistId) {
+			getTasks: function(tasklistId, refresh) {
+				if (refresh === true) {
+					cache.clear('tasks' + tasklistId);
+				}
 				return cache('tasks' + tasklistId, function() {
 					return $http.get(basePath + '/lists/' + tasklistId + '/tasks', params).then(function(response) {
 						return groupTasks(response.data.items);

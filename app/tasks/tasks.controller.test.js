@@ -42,4 +42,8 @@ describe('Tasks controller', function() {
 	it('Should set $scope.tasks object', function() {
 		expect($scope.tasks).toBe(tasksObject);
 	});
+
+	it('Should add new task', function() {
+
+	});
 });
