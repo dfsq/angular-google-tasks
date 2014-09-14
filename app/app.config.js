@@ -1,25 +1,18 @@
-'use strict';
+(function() {
+	'use strict';
 
-angular.module('googleTasks', [
-	'ngRoute',
-	'ngAnimate',
-	'components.services',
-	'components.directives',
-	'login',
-	'tasklists',
-	'tasks'
-])
-
-	.config(['googleApiProvider', function (googleApiProvider) {
+	function googleTasksConfig(googleApiProvider) {
 		googleApiProvider.setConfig({
 			clientId: '421579928051-79o2r8382t52m5tdls381l4rlns6hr95.apps.googleusercontent.com',
 			apiKey: 'AIzaSyCoFGS6BzXCErahLsI8GFsOP-xQ5P7Qc0U',
 			scopes: ['https://www.googleapis.com/auth/tasks', 'https://www.googleapis.com/auth/plus.me']
 		});
-	}])
+	}
 
-	.run(['$rootScope', '$timeout', '$q', '$location', 'application', 'googleApi', 'security', function ($rootScope, $timeout, $q, $location, application, googleApi, security) {
+	googleTasksConfig.$inject = ['googleApiProvider'];
 
+
+	function googleTasksRun($rootScope, $timeout, $q, $location, application, googleApi, security) {
 		/** @property signed_in */
 
 		var gapiPromise,
@@ -85,11 +78,25 @@ angular.module('googleTasks', [
 				}
 			});
 		});
+	}
 
-	}]);
+	googleTasksRun.$inject = ['$rootScope', '$timeout', '$q', '$location', 'application', 'googleApi', 'security'];
+
+	angular.module('googleTasks', [
+		'ngRoute',
+		'ngAnimate',
+		'components.services',
+		'components.directives',
+		'login',
+		'tasklists',
+		'tasks'
+	], googleTasksConfig).run(googleTasksRun);
+})();
 
 
 angular.extend = function extendDeep(dst) {
+	'use strict';
+
 	angular.forEach(arguments, function(obj) {
 		if (obj !== dst) {
 			angular.forEach(obj, function(value, key) {
