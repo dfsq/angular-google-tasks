@@ -83,6 +83,7 @@
 	googleTasksRun.$inject = ['$rootScope', '$timeout', '$q', '$location', 'application', 'googleApi', 'security'];
 
 	angular.module('googleTasks', [
+		'ui.bootstrap',
 		'ngRoute',
 		'ngAnimate',
 		'components.services',

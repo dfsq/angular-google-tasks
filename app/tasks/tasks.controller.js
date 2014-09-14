@@ -1,16 +1,23 @@
 (function() {
 	'use strict';
 
-	function tasksController($scope, $routeParams, tasks) {
+	function tasksController($scope, $routeParams, $modal, cache, tasks) {
 
 		$scope.title = $routeParams.title;
 
 		$scope.addTask = function() {
+			$modal.open({
+				templateUrl: 'tasks/addTask.html',
+				scope: $scope,
+				size: 'sm'
+			});
+		};
 
-//			tasks.createTask($routeParams.id, {title: 'ONE MORE TEST'}).then(function() {
-//				cache.clear('tasks' + $routeParams.id);
-//				loadTasks();
-//			});
+		$scope.saveTask = function() {
+			tasks.createTask($routeParams.id, {title: $scope.newTask.name}).then(function() {
+				cache.clear('tasks' + $routeParams.id);
+				loadTasks();
+			});
 		};
 
 		function loadTasks() {
@@ -22,7 +29,7 @@
 		loadTasks();
 	}
 
-	tasksController.$inject = ['$scope', '$routeParams', 'tasks'];
+	tasksController.$inject = ['$scope', '$routeParams', '$modal', 'cache', 'tasks'];
 
 	angular.module('tasks').controller('tasksController', tasksController);
 })();
