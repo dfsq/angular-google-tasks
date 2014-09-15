@@ -5,6 +5,7 @@ describe('Tasks controller', function() {
 	var tasksController,
 		$q,
 		$scope,
+		$rootScope,
 		routeParams = {
 			id: 'xxx',
 			title: 'Some title'
@@ -12,17 +13,19 @@ describe('Tasks controller', function() {
 		tasksObject = {},
 		tasksService = {
 			getTasks: function() {
-				var deferred = $q.defer();
-				deferred.resolve(tasksObject);
-				return deferred.promise;
+				return $q.when(tasksObject);
+			},
+			deleteTask: function(tasklistId, taskId) {
+				return $q.when(true);
 			}
 		};
 
 	beforeEach(module('googleTasks'));
 
-	beforeEach(inject(function($injector, $controller, $rootScope) {
+	beforeEach(inject(function($injector, $controller) {
 
 		$q = $injector.get('$q');
+		$rootScope = $injector.get('$rootScope');
 		$scope = $rootScope.$new();
 
 		tasksController = $controller('tasksController', {
@@ -32,6 +35,10 @@ describe('Tasks controller', function() {
 		});
 
 		$scope.$digest();
+
+		spyOn(tasksService, 'getTasks').and.callThrough();
+		spyOn(tasksService, 'deleteTask').and.callThrough();
+		spyOn(window, 'confirm').and.callFake(function() { return true; });
 	}));
 
 
@@ -43,7 +50,10 @@ describe('Tasks controller', function() {
 		expect($scope.tasks).toBe(tasksObject);
 	});
 
-	it('Should add new task', function() {
-
+	it('Should delete task and reload list', function() {
+		$scope.deleteTask(1, 1);
+		$rootScope.$digest();
+		expect(tasksService.deleteTask).toHaveBeenCalled();
+		expect(tasksService.getTasks).toHaveBeenCalled();
 	});
 });

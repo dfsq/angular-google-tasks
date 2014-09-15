@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Tasks controller', function() {
+describe('Add task controller', function() {
 
 	var addTaskController,
 		$q,
