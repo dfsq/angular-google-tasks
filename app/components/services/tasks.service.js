@@ -66,6 +66,14 @@
 			 */
 			createTask: function(tasklistId, data) {
 				return $http.post(basePath + '/lists/' + tasklistId + '/tasks', data, params);
+			},
+
+			/**
+			 * Remove task from the list.
+			 * DELETE https://www.googleapis.com/tasks/v1/lists/tasklist/tasks/task
+			 */
+			deleteTask: function(tasklistId, taskId) {
+				return $http.delete(basePath + '/lists/' + tasklistId + '/tasks/' + taskId, params);
 			}
 		};
 	}

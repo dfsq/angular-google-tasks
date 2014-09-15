@@ -29,6 +29,7 @@
 		<span class="title">{{task.title}}</span>
 		<span class="actions">
 			<span class="up" title="pin task">&#10138;</span>
+			<span class="delete" title="delete task" ng-click="deleteTask(task.id)">delete</span>
 		</span>
 	</div>
 	<ul ng-if="task.children.length">
