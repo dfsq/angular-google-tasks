@@ -3,7 +3,7 @@
 
 	function tasksController($scope, $routeParams, $modal, tasks) {
 
-		var takslistId = $routeParams.id;
+		var tasklistId = $routeParams.id;
 
 		$scope.title = $routeParams.title;
 
@@ -19,12 +19,17 @@
 
 		$scope.deleteTask = function(taskId) {
 			if (confirm('Task will be deleted. Ok?')) {
-				tasks.deleteTask(takslistId, taskId).then(loadTasks);
+				tasks.deleteTask(tasklistId, taskId).then(loadTasks);
 			}
 		};
 
+		$scope.changeStatus = function(task) {
+			console.log(task);
+			tasks.updateTask(tasklistId, task.id, { title: task.status });
+		};
+
 		function loadTasks() {
-			tasks.getTasks(takslistId, true).then(function(data) {
+			tasks.getTasks(tasklistId, true).then(function(data) {
 				$scope.tasks = data;
 			});
 		}

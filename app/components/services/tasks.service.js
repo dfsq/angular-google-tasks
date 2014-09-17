@@ -1,6 +1,12 @@
 (function() {
 	'use strict';
 
+	/**
+	 * @see https://developers.google.com/google-apps/tasks/v1/reference/
+	 * @param $http
+	 * @param cache
+	 * @returns {{getTaskLists: getTaskLists, getTasks: getTasks, moveTask: moveTask, createTask: createTask, deleteTask: deleteTask, updateTask: updateTask}}
+	 */
 	function tasks($http, cache) {
 
 		var basePath = 'https://www.googleapis.com/tasks/v1',
@@ -74,6 +80,14 @@
 			 */
 			deleteTask: function(tasklistId, taskId) {
 				return $http.delete(basePath + '/lists/' + tasklistId + '/tasks/' + taskId, params);
+			},
+
+			/**
+			 * Update task attributes.
+			 * PUT https://www.googleapis.com/tasks/v1/lists/tasklist/tasks/task
+			 */
+			updateTask: function(tasklistId, taskId, data) {
+				return $http.put(basePath + '/lists/' + tasklistId + '/tasks/' + taskId, data, params);
 			}
 		};
 	}
