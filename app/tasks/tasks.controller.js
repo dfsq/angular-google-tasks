@@ -24,8 +24,7 @@
 		};
 
 		$scope.changeStatus = function(task) {
-			console.log(task);
-			tasks.updateTask(tasklistId, task.id, { title: task.status });
+			tasks.updateTask(tasklistId, task, { status: task.status });
 		};
 
 		function loadTasks() {

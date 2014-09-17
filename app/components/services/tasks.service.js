@@ -86,8 +86,9 @@
 			 * Update task attributes.
 			 * PUT https://www.googleapis.com/tasks/v1/lists/tasklist/tasks/task
 			 */
-			updateTask: function(tasklistId, taskId, data) {
-				return $http.put(basePath + '/lists/' + tasklistId + '/tasks/' + taskId, data, params);
+			updateTask: function(tasklistId, task, data) {
+				task = angular.extend(task, data);
+				return $http.put(basePath + '/lists/' + tasklistId + '/tasks/' + task.id, task, params);
 			}
 		};
 	}
