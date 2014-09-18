@@ -24,6 +24,9 @@
 		};
 
 		$scope.changeStatus = function(task) {
+			if (task.status === 'needsAction') {
+				delete task.completed;
+			}
 			tasks.updateTask(tasklistId, task, { status: task.status });
 		};
 
