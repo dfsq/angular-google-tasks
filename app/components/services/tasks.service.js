@@ -21,15 +21,21 @@
 		 * @param tasks {Array}
 		 */
 		function groupTasks(tasks) {
-			var idIndexMap = {};
-			tasks.forEach(function(task, index) {
-				idIndexMap[task.id] = index;
+
+			var idIndexMap = {}, task, i;
+
+			for (i = 0; i < tasks.length; i++) {
+				task = tasks[i];
+				idIndexMap[task.id] = i;
 				if (task.parent) {
-					var parent = tasks[idIndexMap[task.parent]];
+					var parentIndex = idIndexMap[task.parent],
+						parent = tasks[parentIndex];
 					parent.children = parent.children || [];
 					parent.children.push(task);
+					tasks.splice(i--, 1);
 				}
-			});
+			}
+
 			return tasks;
 		}
 
