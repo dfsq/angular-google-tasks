@@ -284,6 +284,21 @@ header .back img {
 	cursor: pointer;
 }
 
+/* Tree counters */
+.tasks-screen ul {
+	counter-reset: section;
+	list-style-type: none;
+}
+.tasks-screen ul .task:after {
+	counter-increment: section;
+	content: counters(section, ".") " ";
+	position: absolute;
+	left: 2px;
+	top: 50%;
+	margin-top: -17px;
+	font-size: 10px;
+}
+
 
 .tasks-screen .task .check,
 .tasks-screen .task .check + label > * {
