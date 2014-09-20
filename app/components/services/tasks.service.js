@@ -25,11 +25,12 @@
 			var idIndexMap = {}, task, i;
 
 			for (i = 0; i < tasks.length; i++) {
+
 				task = tasks[i];
-				idIndexMap[task.id] = i;
+				idIndexMap[task.id] = task;
+
 				if (task.parent) {
-					var parentIndex = idIndexMap[task.parent],
-						parent = tasks[parentIndex];
+					var parent = idIndexMap[task.parent];
 					parent.children = parent.children || [];
 					parent.children.push(task);
 					tasks.splice(i--, 1);
