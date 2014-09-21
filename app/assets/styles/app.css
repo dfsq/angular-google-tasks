@@ -276,6 +276,9 @@ header .back img {
 	border-top: 0 none transparent;
 	border-right: 0 none transparent;
 }
+.tasks-screen li .task > * {
+	vertical-align: middle;
+}
 .tasks-screen ul > li:last-child {
 	border-left: 2px solid transparent;
 }
@@ -303,8 +306,8 @@ header .back img {
 .tasks-screen .task .check,
 .tasks-screen .task .check + label > * {
 	display: none;
-	vertical-align: baseline;
 	cursor: pointer;
+	vertical-align: middle;
 }
 .tasks-screen .task .check + label > img:first-child {
 	display: inline;

@@ -43,7 +43,7 @@
 		</script>
 	</div>
 
-	<div ng-view class="view" ng-class="routeClassName"></div>
+	<div ng-view ng-class="['view', routeClassName]"></div>
 
 	<!-- build:js assets/scripts/vendors.min.js -->
 	<script src="../bower_components/angular/angular.min.js"></script>
