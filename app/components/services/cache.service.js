@@ -5,7 +5,11 @@
 
 		var cacheData = {};
 
-		function cacheFunction(key, setterFunction) {
+		function cacheFunction(key, setterFunction, refresh) {
+
+			if (refresh === true) {
+				cacheFunction.clear(key);
+			}
 
 			if (cacheData[key]) {
 				return $q.when(cacheData[key]);

@@ -24,28 +24,28 @@ describe('Cache service', function() {
 
 
 	it('should have cache undefined at first', function() {
-		expect(cacheService.get('tasks:123')).toBeUndefined();
+		expect(cacheService.get('tasks123')).toBeUndefined();
 	});
 
 	it('should make request only once for noncached request and populate cache', function() {
 
 		// Get tasks fo for the first time
-		cacheService('tasks:123', function() {
+		cacheService('tasks123', function() {
 			return tasksService.getTasks();
 		});
 		$rootScope.$digest();
 
-		expect(cacheService.get('tasks:123')).toBe(tasksObject);
+		expect(cacheService.get('tasks123')).toBe(tasksObject);
 		expect(tasksService.getTasks).toHaveBeenCalled();
 		expect(tasksService.getTasks.calls.count()).toBe(1);
 
 		// Get tasks one more time'
-		cacheService('tasks:123', function() {
+		cacheService('tasks123', function() {
 			return tasksService.getTasks();
 		});
 		$rootScope.$digest();
 
-		expect(cacheService.get('tasks:123')).toBe(tasksObject);
+		expect(cacheService.get('tasks123')).toBe(tasksObject);
 		expect(tasksService.getTasks.calls.count()).toBe(1);
 
 	});
@@ -53,15 +53,15 @@ describe('Cache service', function() {
 	it('should clear cache', function() {
 
 		// Get tasks fo for the first time
-		cacheService('tasks:123', function() {
+		cacheService('tasks123', function() {
 			return tasksService.getTasks();
 		});
 		$rootScope.$digest();
 
-		expect(cacheService.get('tasks:123')).toBe(tasksObject);
+		expect(cacheService.get('tasks123')).toBe(tasksObject);
 
-		cacheService.clear('tasks:123');
-		expect(cacheService.get('tasks:123')).toBeUndefined();
+		cacheService.clear('tasks123');
+		expect(cacheService.get('tasks123')).toBeUndefined();
 	});
 
 });

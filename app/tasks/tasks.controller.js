@@ -14,12 +14,16 @@
 				scope: $scope,
 				size: 'sm'
 			})
-			.result.then(loadTasks);
+			.result.then(function() {
+				loadTasks(true);
+			});
 		};
 
 		$scope.deleteTask = function(taskId) {
 			if (confirm('Task will be deleted. Ok?')) {
-				tasks.deleteTask(tasklistId, taskId).then(loadTasks);
+				tasks.deleteTask(tasklistId, taskId).then(function() {
+					loadTasks(true);
+				});
 			}
 		};
 
@@ -30,13 +34,13 @@
 			tasks.updateTask(tasklistId, task, { status: task.status });
 		};
 
-		function loadTasks() {
-			tasks.getTasks(tasklistId, true).then(function(data) {
+		function loadTasks(refresh) {
+			tasks.getTasks(tasklistId, refresh).then(function(data) {
 				$scope.tasks = data;
 			});
 		}
 
-		loadTasks();
+		loadTasks(false);
 	}
 
 	tasksController.$inject = ['$scope', '$routeParams', '$modal', 'tasks'];

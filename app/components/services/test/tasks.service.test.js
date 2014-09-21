@@ -3,7 +3,9 @@
 describe('Tasks service', function() {
 
 	var basePath = 'https://www.googleapis.com/tasks/v1',
-		tasks,
+		$rootScope,
+		tasksService,
+		cacheService,
 		tasksResponse = [
 			{id: 1},
 			{id: 2, parent: 1},
@@ -42,33 +44,67 @@ describe('Tasks service', function() {
 			}
 		};
 
-		tasks = $injector.get('tasks');
+		$rootScope = $injector.get('$rootScope');
+		tasksService = $injector.get('tasks');
+		cacheService = $injector.get('cache');
 		$httpBackend = $injector.get('$httpBackend');
 	}));
 
 	it('should define tasks service', function() {
-		expect(tasks).toBeDefined();
+		expect(tasksService).toBeDefined();
 	});
 
 	describe('getTasks method', function() {
 
+		var url = basePath + '/lists/123/tasks?access_token=xxx';
+
 		beforeEach(function() {
-			$httpBackend.when('GET', basePath + '/lists/1/tasks?access_token=xxx').respond({
+			$httpBackend.when('GET', url).respond({
 				items: tasksResponse
 			});
 		});
 
+		afterEach(function() {
+			$httpBackend.verifyNoOutstandingExpectation();
+			$httpBackend.verifyNoOutstandingRequest();
+		});
+
 		it('should define method "getTasks"', function() {
-			expect(tasks.getTasks).toBeDefined();
+			expect(tasksService.getTasks).toBeDefined();
 		});
 
 		it('should load and group tasks', function() {
 			var tasksData = null;
-			tasks.getTasks(1).then(function(data) {
+			tasksService.getTasks(123).then(function(data) {
 				tasksData = data;
 			});
 			$httpBackend.flush();
 			expect(tasksData).toEqual(groupedTasksData);
+		});
+
+		it('should make API request only once and use cache for subsequent', function() {
+			$httpBackend.expectGET(url);
+			tasksService.getTasks(123);
+			$httpBackend.flush();
+
+			// Get tasks one more time, this time no request should be made
+			tasksService.getTasks(123);
+		});
+
+		it('should cache tasks requests', function() {
+			tasksService.getTasks(123);
+			$httpBackend.flush();
+			expect(cacheService.get('tasks123')).toEqual(groupedTasksData);
+		});
+
+		it('should clear cache and make new request', function() {
+			tasksService.getTasks(123);
+			$httpBackend.flush();
+			expect(cacheService.get('tasks123')).toEqual(groupedTasksData);
+
+			// Again new request must be made, so need to flush it
+			tasksService.getTasks(123, true);
+			$httpBackend.flush();
 		});
 	});
 
