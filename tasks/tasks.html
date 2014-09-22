@@ -4,6 +4,9 @@
 		<h1>
 			<a ng-click="back()" class="back"><img src="assets/images/arrow-left.png" alt="" /></a>
 			{{title}}
+			<div class="actions">
+				<a ng-click="addTask()"><img src="assets/images/add.png" title="add new task" alt=""/></a>
+			</div>
 		</h1>
 	</header>
 
@@ -18,7 +21,11 @@
 
 <script type="text/ng-template" id="task-item.html" class="html">
 	<div class="task">
-		<input type="checkbox" class="check" id="check-{{$id}}"/>
+		<input type="checkbox" class="check" id="check-{{$id}}"
+			   ng-model="task.status"
+			   ng-true-value="completed"
+			   ng-false-value="needsAction"
+			   ng-change="changeStatus(task)" />
 		<label for="check-{{$id}}">
 			<img src="assets/images/check-unchecked.png" />
 			<img src="assets/images/check-checked.png" />
@@ -26,7 +33,7 @@
 		<span class="title">{{task.title}}</span>
 		<span class="actions">
 			<span class="up" title="pin task">&#10138;</span>
-			<span class="settings" title="settings">&#9881;</span>
+			<span class="delete" title="delete task" ng-click="deleteTask(task.id)">&xotime;</span>
 		</span>
 	</div>
 	<ul ng-if="task.children.length">
