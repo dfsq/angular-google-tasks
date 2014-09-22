@@ -51,7 +51,9 @@ module.exports = function(grunt) {
 				src: [
 					'bower_components/angular/angular.min.js',
 					'bower_components/angular-route/angular-route.min.js',
-					'bower_components/angular-animate/angular-animate.min.js'
+					'bower_components/angular-animate/angular-animate.min.js',
+					'bower_components/angular-bootstrap/ui-bootstrap.min.js',
+					'bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js'
 				],
 				dest: 'dist/assets/scripts/vendors.min.js'
 			}

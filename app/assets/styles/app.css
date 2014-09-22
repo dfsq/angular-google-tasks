@@ -6,7 +6,9 @@ html, body, .view {
 }
 
 /* No border radius */
-.modal-content, .form-control, .btn {
+.modal-content,
+.modal-content .form-control,
+.modal-content .btn {
 	border-radius: 0;
 }
 
