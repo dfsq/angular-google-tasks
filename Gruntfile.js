@@ -8,6 +8,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-usemin');
 	grunt.loadNpmTasks('grunt-shell');
+	grunt.loadNpmTasks('grunt-karma');
 
 	grunt.initConfig({
 
@@ -92,10 +93,17 @@ module.exports = function(grunt) {
 					].join(' && ');
 				}
 			}
+		},
+
+		karma: {
+			unit: {
+				configFile: 'karma.conf.js'
+			}
 		}
 	});
 
 	grunt.registerTask('build', [
+		'karma',
 		'clean:pre',
 		'copy',
 		'concat',
