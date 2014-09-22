@@ -285,14 +285,12 @@ header .back img {
 
 .tasks-screen li .task .actions span {
 	cursor: pointer;
-}
-
-.tasks-screen li .task .actions .delete {
 	opacity: .2;
 }
-.tasks-screen li .task:hover .actions .delete {
+.tasks-screen li .task:hover .actions span {
 	opacity: 1;
 }
+
 
 
 /* Tree counters */
