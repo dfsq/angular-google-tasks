@@ -287,6 +287,14 @@ header .back img {
 	cursor: pointer;
 }
 
+.tasks-screen li .task .actions .delete {
+	opacity: .2;
+}
+.tasks-screen li .task:hover .actions .delete {
+	opacity: 1;
+}
+
+
 /* Tree counters */
 .tasks-screen ul {
 	counter-reset: section;
