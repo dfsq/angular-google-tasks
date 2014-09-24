@@ -24,17 +24,6 @@
 
 			var idIndexMap = {}, task, i;
 
-			// Need to sort tasks in order tasks without parent property go first
-			tasks.sort(function(a, b) {
-				if (a.parent && !b.parent) {
-					return 1;
-				}
-				if (b.parent && !a.parent) {
-					return -1;
-				}
-				return 0;
-			});
-
 			for (i = 0; i < tasks.length; i++) {
 
 				task = tasks[i];
