@@ -196,7 +196,7 @@ header .back img {
 	right: 15px;
 }
 .task-lists li:hover {
-	background: rgba(226, 83, 56, 0.32);
+	background: rgba(226, 83, 56, 0.32) !important;
 }
 .task-lists .info {
 	font-size: .7em;
