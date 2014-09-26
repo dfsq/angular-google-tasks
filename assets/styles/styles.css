@@ -6,9 +6,11 @@ html, body, .view {
 }
 
 /* No border radius */
-/*.modal-content, .form-control, .btn {*/
-	/*border-radius: 0;*/
-/*}*/
+.modal-content,
+.modal-content .form-control,
+.modal-content .btn {
+	border-radius: 0;
+}
 
 
 
@@ -185,6 +187,7 @@ header .back img {
 .task-lists li > a {
 	font-size: 28px;
 	word-break: break-all;
+	color: #B3B3B3;
 }
 .task-lists li > .stats {
 	color: #DDD;
