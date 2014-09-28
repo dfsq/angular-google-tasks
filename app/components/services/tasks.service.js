@@ -42,6 +42,17 @@
 			return tasks;
 		}
 
+		function getCompleted(data) {
+			var n = 0;
+			data.forEach(function(el) {
+				console.log(el.status);
+				if (el.status === 'completed') {
+					n++;
+				}
+			});
+			return n;
+		}
+
 		return {
 
 			/** @property items */
@@ -57,7 +68,16 @@
 			getTasks: function(tasklistId, refresh) {
 				return cache('tasks' + tasklistId, function() {
 					return $http.get(basePath + '/lists/' + tasklistId + '/tasks', params).then(function(response) {
-						return groupTasks(response.data.items);
+
+						var total = response.data.items.length,
+							completed = getCompleted(response.data.items),
+							grouped = groupTasks(response.data.items);
+
+						grouped.total = total;
+						grouped.completed = completed;
+						grouped.todo = total - completed;
+
+						return grouped;
 					});
 				}, refresh);
 			},

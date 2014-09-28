@@ -37,6 +37,9 @@
 		function loadTasks(refresh) {
 			tasks.getTasks(tasklistId, refresh).then(function(data) {
 				$scope.tasks = data;
+				$scope.total = data.total;
+				$scope.completed = data.completed;
+				$scope.todo = data.todo;
 			});
 		}
 

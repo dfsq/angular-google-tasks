@@ -188,6 +188,7 @@ header .back img {
 	font-size: 28px;
 	word-break: break-all;
 	color: #B3B3B3;
+	text-shadow: 1px 1px 1px #333;
 }
 .task-lists li > .stats {
 	color: #DDD;

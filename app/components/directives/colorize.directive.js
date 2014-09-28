@@ -45,7 +45,7 @@
 			average = getAverage(avgs);
 			hue = Math.round(average * 360 / 100);
 
-			return 'hsl(' + hue + ', 20%, 40%)';
+			return 'hsla(' + hue + ', 20%, 40%, .5)';
 		};
 
 	})();
