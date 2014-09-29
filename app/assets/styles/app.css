@@ -143,6 +143,7 @@ header .back img {
 .tasklists-screen header {
 	padding: 25px 0;
 	min-height: 67px;
+	position: relative;
 }
 .tasklists-screen header h2 {
 	color: #555;
@@ -170,6 +171,25 @@ header .back img {
 	color: #DDD;
 	background: none;
 }
+
+.tasklists-screen header .add-new {
+	color: hsl(0, 0%, 93%);
+	font-size: 62px;
+	position: absolute;
+	right: 0;
+	top: 15px;
+	height: 60px;
+	display: inline-block;
+	width: 60px;
+	background: rgba(120, 120, 120, 0.15);
+	line-height: 57px;
+	text-align: center;
+	cursor: pointer;
+}
+.tasklists-screen header .add-new:hover {
+	background: rgba(120, 120, 120, 0.4);
+}
+
 
 .task-lists li {
 	list-style: none;

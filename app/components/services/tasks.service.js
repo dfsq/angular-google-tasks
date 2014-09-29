@@ -57,12 +57,12 @@
 
 			/** @property items */
 
-			getTaskLists: function() {
+			getTaskLists: function(refresh) {
 				return cache('tasklists', function() {
 					return $http.get(basePath + '/users/@me/lists', params).then(function(response) {
 						return response.data.items;
 					});
-				});
+				}, refresh);
 			},
 
 			getTasks: function(tasklistId, refresh) {
@@ -80,6 +80,15 @@
 						return grouped;
 					});
 				}, refresh);
+			},
+
+			/**
+			 * Create new task list.
+			 * POST https://www.googleapis.com/tasks/v1/users/@me/lists
+			 * @param data
+			 */
+			createTaskList: function(data) {
+				return $http.post(basePath + '/users/@me/lists', data, params);
 			},
 
 			/**

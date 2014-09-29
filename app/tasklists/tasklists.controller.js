@@ -2,9 +2,21 @@
 	'use strict';
 
 	function tasklistsController($scope, tasks) {
-		tasks.getTaskLists().then(function(data) {
-			$scope.taskLists = data;
-		});
+
+		$scope.addNew = function() {
+			var taskList = prompt('New task list');
+			tasks.createTaskList({title: taskList}).then(function() {
+				loadTaskLists(true);
+			});
+		};
+
+		function loadTaskLists(refresh) {
+			tasks.getTaskLists(refresh).then(function(data) {
+				$scope.taskLists = data;
+			});
+		}
+
+		loadTaskLists(false);
 	}
 
 	tasklistsController.$inject = ['$scope', 'tasks'];
