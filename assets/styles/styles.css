@@ -143,6 +143,7 @@ header .back img {
 .tasklists-screen header {
 	padding: 25px 0;
 	min-height: 67px;
+	position: relative;
 }
 .tasklists-screen header h2 {
 	color: #555;
@@ -171,6 +172,25 @@ header .back img {
 	background: none;
 }
 
+.tasklists-screen header .add-new {
+	color: hsl(0, 0%, 93%);
+	font-size: 62px;
+	position: absolute;
+	right: 0;
+	top: 15px;
+	height: 60px;
+	display: inline-block;
+	width: 60px;
+	background: rgba(120, 120, 120, 0.15);
+	line-height: 57px;
+	text-align: center;
+	cursor: pointer;
+}
+.tasklists-screen header .add-new:hover {
+	background: rgba(120, 120, 120, 0.4);
+}
+
+
 .task-lists li {
 	list-style: none;
 	padding: 10px;
@@ -188,6 +208,7 @@ header .back img {
 	font-size: 28px;
 	word-break: break-all;
 	color: #B3B3B3;
+	text-shadow: 1px 1px 1px #333;
 }
 .task-lists li > .stats {
 	color: #DDD;
@@ -195,8 +216,8 @@ header .back img {
 	bottom: 0;
 	right: 15px;
 }
-.task-lists li:hover {
-	background: rgba(226, 83, 56, 0.32);
+.task-lists li:not(.actions):hover {
+	background: rgba(226, 83, 56, 0.32) !important;
 }
 .task-lists .info {
 	font-size: .7em;
@@ -208,6 +229,38 @@ header .back img {
 	word-break: break-all;
 	max-height: 50px;
 	overflow: hidden;
+}
+
+.task-lists li .btn-actions {
+	position: absolute;
+	top: 0;
+	right: 7px;
+	cursor: pointer;
+	color: #AAA;
+}
+.task-lists li .btn-actions:hover {
+	color: #EEE;
+}
+.task-lists li .actions-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, .8);
+	display: none;
+}
+.task-lists li.actions .actions-overlay {
+	display: block;
+}
+.task-lists li.actions > *:not(.actions-overlay) {
+	-webkit-filter: blur(1.5px);
+}
+.task-lists li .actions-overlay .btn-close {
+	position: absolute;
+	top: 3px;
+	right: 9px;
+	cursor: pointer;
 }
 
 

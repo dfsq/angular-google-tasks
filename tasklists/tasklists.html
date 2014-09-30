@@ -8,14 +8,22 @@
 			<li><a href="#">Pick up Thomas</a></li>
 			<li><a href="#">Call Mike</a></li>
 		</ul>
+
+		<span class="add-new" ng-click="addNew()">+</span>
 	</header>
 
 	<ul class="task-lists list-unstyled">
-		<li ng-repeat="taskList in taskLists" colorize=".title">
+		<li ng-repeat="taskList in taskLists" colorize=".title" ng-class="{actions: showActions}">
 			<a class="title" href="#/tasklists/{{taskList.title}}/{{taskList.id}}">{{taskList.title}}</a>
 			<div class="info">{{taskList.updated | date:'short' }}</div>
 			<div class="first">&gt;&gt; Pick up Thomas</div>
 			<h2 class="stats">+9/-2</h2>
+
+			<span class="btn-actions" title="actions" ng-click="showActions=true">&hellip;</span>
+			<div class="actions-overlay">
+				<span class="btn-close" ng-click="showActions=false">&times;</span>
+				<h4>Actions</h4>
+			</div>
 		</li>
 	</ul>
 </div>
