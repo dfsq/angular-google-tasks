@@ -216,7 +216,7 @@ header .back img {
 	bottom: 0;
 	right: 15px;
 }
-.task-lists li:hover {
+.task-lists li:not(.actions):hover {
 	background: rgba(226, 83, 56, 0.32) !important;
 }
 .task-lists .info {
@@ -229,6 +229,38 @@ header .back img {
 	word-break: break-all;
 	max-height: 50px;
 	overflow: hidden;
+}
+
+.task-lists li .btn-actions {
+	position: absolute;
+	top: 0;
+	right: 7px;
+	cursor: pointer;
+	color: #AAA;
+}
+.task-lists li .btn-actions:hover {
+	color: #EEE;
+}
+.task-lists li .actions-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, .8);
+	display: none;
+}
+.task-lists li.actions .actions-overlay {
+	display: block;
+}
+.task-lists li.actions > *:not(.actions-overlay) {
+	-webkit-filter: blur(1.5px);
+}
+.task-lists li .actions-overlay .btn-close {
+	position: absolute;
+	top: 3px;
+	right: 9px;
+	cursor: pointer;
 }
 
 
