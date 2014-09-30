@@ -100,12 +100,15 @@ module.exports = function(grunt) {
 		karma: {
 			unit: {
 				configFile: 'karma.conf.js'
+			},
+			dist: {
+				configFile: 'karma.dist.conf.js'
 			}
 		}
 	});
 
 	grunt.registerTask('build', [
-		'karma',
+		'karma:unit',
 		'clean:pre',
 		'copy',
 		'concat',
@@ -115,6 +118,7 @@ module.exports = function(grunt) {
 	]);
 
 	grunt.registerTask('deploy', function(message) {
+		grunt.task.run('karma:dist');
 		if (!message) {
 			grunt.fail.warn('Provide commit message');
 		}
