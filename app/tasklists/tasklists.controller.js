@@ -4,10 +4,12 @@
 	function tasklistsController($scope, tasks) {
 
 		$scope.addNew = function() {
-			var taskList = prompt('New task list');
-			tasks.createTaskList({title: taskList}).then(function() {
-				loadTaskLists(true);
-			});
+			var taskList = window.prompt('New task list');
+			if (taskList) {
+				tasks.createTaskList({title: taskList}).then(function() {
+					loadTaskLists(true);
+				});
+			}
 		};
 
 		function loadTaskLists(refresh) {
