@@ -12,6 +12,12 @@
 			}
 		};
 
+		$scope.delete = function(tasklistId) {
+			tasks.deleteTaskList(tasklistId).then(function() {
+				loadTaskLists(true);
+			});
+		};
+
 		function loadTaskLists(refresh) {
 			tasks.getTaskLists(refresh).then(function(data) {
 				$scope.taskLists = data;
