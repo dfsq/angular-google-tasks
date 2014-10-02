@@ -191,7 +191,7 @@ header .back img {
 }
 
 
-.task-lists li {
+.task-lists > li {
 	list-style: none;
 	padding: 10px;
 	width: 200px;
@@ -204,19 +204,19 @@ header .back img {
 	background: rgba(185, 231, 176, 0.3);
 	position: relative;
 }
-.task-lists li > a {
+.task-lists > li > a {
 	font-size: 28px;
 	word-break: break-all;
 	color: #B3B3B3;
 	text-shadow: 1px 1px 1px #333;
 }
-.task-lists li > .stats {
+.task-lists > li > .stats {
 	color: #DDD;
 	position: absolute;
 	bottom: 0;
 	right: 15px;
 }
-.task-lists li:not(.actions):hover {
+.task-lists > li:not(.actions):hover {
 	background: rgba(226, 83, 56, 0.32) !important;
 }
 .task-lists .info {
@@ -231,32 +231,34 @@ header .back img {
 	overflow: hidden;
 }
 
-.task-lists li .btn-actions {
+.task-lists > li .btn-actions {
 	position: absolute;
 	top: 0;
 	right: 7px;
 	cursor: pointer;
 	color: #AAA;
 }
-.task-lists li .btn-actions:hover {
+.task-lists > li .btn-actions:hover {
 	color: #EEE;
 }
-.task-lists li .actions-overlay {
+.task-lists > li .actions-overlay {
 	position: absolute;
 	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: rgba(0, 0, 0, .8);
+	background-color: rgba(0, 0, 0, .6);
 	display: none;
 }
-.task-lists li.actions .actions-overlay {
+.task-lists > li.actions .actions-overlay {
 	display: block;
+	padding: 10px 20px;
 }
-.task-lists li.actions > *:not(.actions-overlay) {
+.task-lists > li.actions > *:not(.actions-overlay) {
 	-webkit-filter: blur(1.5px);
+	filter: blur(1.5px);
 }
-.task-lists li .actions-overlay .btn-close {
+.task-lists > li .actions-overlay .btn-close {
 	position: absolute;
 	top: 3px;
 	right: 9px;
