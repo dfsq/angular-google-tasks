@@ -45,7 +45,6 @@
 		function getCompleted(data) {
 			var n = 0;
 			data.forEach(function(el) {
-				console.log(el.status);
 				if (el.status === 'completed') {
 					n++;
 				}
