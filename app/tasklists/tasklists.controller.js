@@ -1,7 +1,7 @@
 (function() {
 	'use strict';
 
-	function tasklistsController($scope, tasks) {
+	function tasklistsController($scope, tasks, sModal) {
 
 		$scope.addNew = function() {
 			var taskList = window.prompt('New task list');
@@ -10,6 +10,24 @@
 					loadTaskLists(true);
 				});
 			}
+		};
+
+		$scope.test = function() {
+			var modalPromise = sModal.open({
+				scope: $scope,
+				controller: function($scope, $modalInstance) {
+					$scope.save = function() {
+						$modalInstance.close();
+					};
+				},
+				template: 'modal-content.html'
+			});
+
+			modalPromise.then(function() {
+				alert('ok!');
+			}, function() {
+				alert('canceled..');
+			});
 		};
 
 		$scope.delete = function(tasklistId) {
@@ -27,7 +45,7 @@
 		loadTaskLists(false);
 	}
 
-	tasklistsController.$inject = ['$scope', 'tasks'];
+	tasklistsController.$inject = ['$scope', 'tasks', 'sModal'];
 
 	angular.module('tasklists').controller('tasklistsController', tasklistsController);
 })();
