@@ -4,29 +4,16 @@
 	function tasklistsController($scope, tasks, sModal) {
 
 		$scope.addNew = function() {
-			var taskList = window.prompt('New task list');
-			if (taskList) {
-				tasks.createTaskList({title: taskList}).then(function() {
-					loadTaskLists(true);
-				});
-			}
-		};
 
-		$scope.test = function() {
-			var modalPromise = sModal.open({
+			sModal.open({
 				scope: $scope,
-				controller: function($scope, $modalInstance) {
-					$scope.save = function() {
-						$modalInstance.close();
-					};
-				},
-				template: 'modal-content.html'
-			});
-
-			modalPromise.then(function() {
-				alert('ok!');
-			}, function() {
-				alert('canceled..');
+				templateUrl: 'tasklists/addTasklist.html'
+			}).then(function(taskList) {
+				if (taskList) {
+					tasks.createTaskList({title: taskList}).then(function() {
+						loadTaskLists(true);
+					});
+				}
 			});
 		};
 

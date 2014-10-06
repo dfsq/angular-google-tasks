@@ -5,13 +5,7 @@
 
 		var getTemplate = function(content) {
 			var str =
-//				'<div class="csspopup-overlay">' +
-//					'<div class="csspopup-popup">' +
-//						'<div class="csspopup-close" ng-click="$modalInstance.dismiss()">&times;</div>' +
-//						'<div class="csspopup-content">' + content + '</div>' +
-//					'</div>' +
-//				'</div>';
-				'<div class="modal fade">' +
+				'<div class="modal fade in simple-modal">' +
 					'<div class="modal-dialog">' +
 						'<div class="modal-content">' + content + '</div>' +
 					'</div>' +
@@ -29,7 +23,7 @@
 					$modalInstance = {
 						close: function() {
 							cleanUp();
-							deferred.resolve();
+							deferred.resolve.apply(null, arguments);
 						},
 						dismiss: function() {
 							cleanUp();
@@ -44,11 +38,15 @@
 
 				scope.$modalInstance = $modalInstance;
 
-				$controller(config.controller, {
-					$scope: scope,
-					$modalInstance: $modalInstance
-				});
+				// Init controller if provided
+				if (config.controller) {
+					$controller(config.controller, {
+						$scope: scope,
+						$modalInstance: $modalInstance
+					});
+				}
 
+				// Template url or string
 				if (config.templateUrl) {
 					tpl = getTemplate('<div ng-include="\'' + config.templateUrl + '\'"></div>');
 				}
@@ -56,7 +54,14 @@
 					tpl = getTemplate(config.template);
 				}
 
+				// Compile and append to DOM
 				compiled = $compile(tpl)(scope);
+
+				// Add CSS class if provided
+				if (config.windowClass) {
+					compiled.addClass(config.windowClass);
+				}
+
 				$document.find('body').append(compiled);
 
 				return deferred.promise;

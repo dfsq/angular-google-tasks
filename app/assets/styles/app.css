@@ -6,6 +6,10 @@ html, body, .view {
 }
 
 /* No border radius */
+.simple-modal {
+	display: block;
+}
+
 .modal-content,
 .modal-content .form-control,
 .modal-content .btn {
@@ -188,6 +192,15 @@ header .back img {
 }
 .tasklists-screen header .add-new:hover {
 	background: rgba(120, 120, 120, 0.4);
+}
+
+/* adding new tasklist */
+.add-tasklist-modal .form-group {
+	margin-bottom: 0;
+}
+.add-tasklist-modal .form-control {
+	height: 65px;
+	font-size: 25px;
 }
 
 
