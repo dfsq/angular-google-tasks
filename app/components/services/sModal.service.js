@@ -5,7 +5,7 @@
 
 		var getTemplate = function(content) {
 			var str =
-				'<div class="modal fade in simple-modal">' +
+				'<div class="modal fade simple-modal">' +
 					'<div class="modal-dialog">' +
 						'<div class="modal-content">' + content + '</div>' +
 					'</div>' +
@@ -32,7 +32,10 @@
 					};
 
 				function cleanUp() {
-					compiled.remove();
+					compiled.removeClass('in');
+					setTimeout(function() {
+						compiled.remove();
+					}, 50);
 					scope.$destroy();
 				}
 
@@ -63,6 +66,9 @@
 				}
 
 				$document.find('body').append(compiled);
+				setTimeout(function() {
+					compiled.addClass('in');
+				}, 50);
 
 				return deferred.promise;
 			}
