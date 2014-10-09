@@ -1,20 +1,25 @@
+/**
+ * Simple bootstrap ui implementation.
+ * @namespace modal
+ */
 (function() {
 	'use strict';
 
 	function sModal($q, $controller, $compile, $document) {
 
 		var getTemplate = function(content) {
-			var str =
-				'<div class="modal fade simple-modal">' +
-					'<div class="modal-dialog">' +
-						'<div class="modal-content">' + content + '</div>' +
+			return '<div class="modal fade simple-modal">' +
+					   '<div class="modal-dialog">' +
+						   '<div class="modal-content">' + content + '</div>' +
+					   '</div>' +
 					'</div>' +
-				'</div>';
-			return str;
+					'<div class="modal-backdrop fade in"></div>';
 		};
 
 		return {
 			open: function(config) {
+
+				/** @property windowClass */
 
 				var deferred = $q.defer(),
 					scope = config.scope.$new(),
@@ -66,6 +71,7 @@
 				}
 
 				$document.find('body').append(compiled);
+
 				setTimeout(function() {
 					compiled.addClass('in');
 				}, 50);
