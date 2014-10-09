@@ -18,8 +18,16 @@
 		};
 
 		$scope.delete = function(tasklistId) {
-			tasks.deleteTaskList(tasklistId).then(function() {
-				loadTaskLists(true);
+			sModal.open({
+				scope: $scope,
+				controller: ['$scope', function($scope) {
+					$scope.message = 'Tasklist will be deleted with all tasks in it. Proceed?';
+				}],
+				templateUrl: 'components/templates/confirm.html'
+			}).then(function() {
+				tasks.deleteTaskList(tasklistId).then(function() {
+					loadTaskLists(true);
+				});
 			});
 		};
 

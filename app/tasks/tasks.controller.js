@@ -18,7 +18,6 @@
 		};
 
 		$scope.deleteTask = function(taskId) {
-
 			sModal.open({
 				scope: $scope,
 				controller: ['$scope', function($scope) {

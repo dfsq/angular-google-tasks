@@ -282,6 +282,10 @@ header .back img {
 	cursor: pointer;
 }
 
+.task-lists > li .actions-overlay .actions a {
+	cursor: pointer;
+}
+
 
 /* Tasks screen */
 .tasks-screen {
