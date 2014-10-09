@@ -1,30 +1,35 @@
 (function() {
 	'use strict';
 
-	function tasksController($scope, $routeParams, $modal, tasks) {
+	function tasksController($scope, $routeParams, sModal, tasks) {
 
 		var tasklistId = $routeParams.id;
 
 		$scope.title = $routeParams.title;
 
 		$scope.addTask = function() {
-			$modal.open({
+			sModal.open({
 				controller: 'addTaskController',
 				templateUrl: 'tasks/addTask.html',
-				scope: $scope,
-				size: 'sm'
-			})
-			.result.then(function() {
+				scope: $scope
+			}).then(function() {
 				loadTasks(true);
 			});
 		};
 
 		$scope.deleteTask = function(taskId) {
-			if (confirm('Task will be deleted. Ok?')) {
+
+			sModal.open({
+				scope: $scope,
+				controller: ['$scope', function($scope) {
+					$scope.message = 'Task will be deleted forever. Ok?';
+				}],
+				templateUrl: 'components/templates/confirm.html'
+			}).then(function() {
 				tasks.deleteTask(tasklistId, taskId).then(function() {
 					loadTasks(true);
 				});
-			}
+			});
 		};
 
 		$scope.changeStatus = function(task) {
@@ -46,7 +51,7 @@
 		loadTasks(false);
 	}
 
-	tasksController.$inject = ['$scope', '$routeParams', '$modal', 'tasks'];
+	tasksController.$inject = ['$scope', '$routeParams', 'sModal', 'tasks'];
 
 	angular.module('tasks').controller('tasksController', tasksController);
 })();

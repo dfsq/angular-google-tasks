@@ -195,12 +195,16 @@ header .back img {
 }
 
 /* adding new tasklist */
-.add-tasklist-modal .form-group {
+.modal-add .form-group {
 	margin-bottom: 0;
 }
-.add-tasklist-modal .form-control {
+.modal-add .form-control {
 	height: 65px;
 	font-size: 25px;
+}
+
+.confirm-modal .message {
+	font-size: 24px;
 }
 
 
