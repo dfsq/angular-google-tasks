@@ -129,6 +129,7 @@ module.exports = function(grunt) {
 	]);
 
 	grunt.registerTask('deploy', function(message) {
+		grunt.task.run('build');
 		grunt.task.run('karma:dist');
 		if (!message) {
 			grunt.fail.warn('Provide commit message');
