@@ -317,6 +317,15 @@ header .back img {
 	display: inline-block;
 }
 
+.tasks-screen .stats.hide,
+.tasks-screen .stats.hide + ul,
+.tasks-screen .no-tasks {
+	display: none;
+}
+.tasks-screen .stats.hide ~ .no-tasks {
+	display: block;
+}
+
 .tasks-screen .list {
 	padding: 0;
 }

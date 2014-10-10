@@ -68,6 +68,10 @@
 				return cache('tasks' + tasklistId, function() {
 					return $http.get(basePath + '/lists/' + tasklistId + '/tasks', params).then(function(response) {
 
+						if (!response.data.items) {
+							return [];
+						}
+
 						var total = response.data.items.length,
 							completed = getCompleted(response.data.items),
 							grouped = groupTasks(response.data.items);
