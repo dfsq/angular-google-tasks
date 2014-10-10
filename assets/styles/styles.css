@@ -6,6 +6,10 @@ html, body, .view {
 }
 
 /* No border radius */
+.simple-modal {
+	display: block;
+}
+
 .modal-content,
 .modal-content .form-control,
 .modal-content .btn {
@@ -190,6 +194,19 @@ header .back img {
 	background: rgba(120, 120, 120, 0.4);
 }
 
+/* adding new tasklist */
+.modal-add .form-group {
+	margin-bottom: 0;
+}
+.modal-add .form-control {
+	height: 65px;
+	font-size: 25px;
+}
+
+.confirm-modal .message {
+	font-size: 24px;
+}
+
 
 .task-lists > li {
 	list-style: none;
@@ -265,6 +282,10 @@ header .back img {
 	cursor: pointer;
 }
 
+.task-lists > li .actions-overlay .actions a {
+	cursor: pointer;
+}
+
 
 /* Tasks screen */
 .tasks-screen {
@@ -294,6 +315,15 @@ header .back img {
 	color: #08C;
 	padding: 0 0 5px 5px;
 	display: inline-block;
+}
+
+.tasks-screen .stats.hide,
+.tasks-screen .stats.hide + ul,
+.tasks-screen .no-tasks {
+	display: none;
+}
+.tasks-screen .stats.hide ~ .no-tasks {
+	display: block;
 }
 
 .tasks-screen .list {

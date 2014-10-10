@@ -10,13 +10,15 @@
 		</h1>
 	</header>
 
-	<div class="stats">
+	<div class="stats" ng-class="{hide: !tasks.length}">
 		<span>{{total}} tasks (+{{todo}}/-{{completed}})</span>
 	</div>
 
 	<ul class="list">
 		<li ng-repeat="task in tasks" ng-include="'task-item.html'"></li>
 	</ul>
+
+	<div class="no-tasks">There are no tasks in this list yet.</div>
 </div>
 
 <script type="text/ng-template" id="task-item.html" class="html">
