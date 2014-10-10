@@ -16,6 +16,11 @@ describe('Tasklists controller', function() {
 			deleteTaskList: function(tasklistId) {
 				return $q.when(true);
 			}
+		},
+		sModal = {
+			open: function() {
+				return $q.when(true);
+			}
 		};
 
 	beforeEach(module('googleTasks'));
@@ -28,7 +33,8 @@ describe('Tasklists controller', function() {
 
 		tasklistsController = $controller('tasklistsController', {
 			$scope: $scope,
-			tasks: tasksService
+			tasks: tasksService,
+			sModal: sModal
 		});
 
 		$scope.$digest();
