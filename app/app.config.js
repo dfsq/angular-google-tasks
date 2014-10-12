@@ -86,6 +86,7 @@
 		'ui.bootstrap',
 		'ngRoute',
 		'ngAnimate',
+		'ngSanitize',
 		'components.services',
 		'components.directives',
 		'login',
