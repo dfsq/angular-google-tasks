@@ -15,6 +15,9 @@ describe('Tasklists controller', function() {
 			},
 			deleteTaskList: function(tasklistId) {
 				return $q.when(true);
+			},
+			updateTaskList: function() {
+				return $q.when(true);
 			}
 		},
 		sModal = {
@@ -40,6 +43,7 @@ describe('Tasklists controller', function() {
 		$scope.$digest();
 
 		spyOn(tasksService, 'deleteTaskList').and.callThrough();
+		spyOn(tasksService, 'updateTaskList').and.callThrough();
 	}));
 
 
@@ -51,5 +55,11 @@ describe('Tasklists controller', function() {
 		$scope.delete(1);
 		$rootScope.$digest();
 		expect(tasksService.deleteTaskList).toHaveBeenCalled();
+	});
+
+	it('should update tasklist title', function() {
+		$scope.rename({title: 'New title'});
+		$rootScope.$digest();
+		expect(tasksService.updateTaskList).toHaveBeenCalled();
 	});
 });
