@@ -95,6 +95,16 @@
 			},
 
 			/**
+			 * PUT https://www.googleapis.com/tasks/v1/users/@me/lists/tasklist
+			 * @param taskList
+			 * @param data
+			 */
+			updateTaskList: function(taskList, data) {
+				taskList = angular.extend(taskList, data);
+				return $http.put(basePath + '/users/@me/lists/' + taskList.id, taskList, params);
+			},
+
+			/**
 			 * Delete task list.
 			 * DELETE https://www.googleapis.com/tasks/v1/users/@me/lists/tasklist
 			 * @param tasklistId
