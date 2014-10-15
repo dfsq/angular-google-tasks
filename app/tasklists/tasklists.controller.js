@@ -9,9 +9,7 @@
 				templateUrl: 'tasklists/addTasklist.html'
 			}).then(function(taskList) {
 				if (taskList) {
-					tasks.createTaskList({title: taskList}).then(function() {
-						loadTaskLists(true);
-					});
+					tasks.createTaskList({title: taskList}).then(reloadList);
 				}
 			});
 		};
@@ -24,11 +22,11 @@
 				}],
 				templateUrl: 'components/templates/confirm.html'
 			}).then(function() {
-				tasks.deleteTaskList(tasklistId).then(function() {
-					loadTaskLists(true);
-				});
+				tasks.deleteTaskList(tasklistId).then(reloadList);
 			});
 		};
+
+		$scope.refresh = reloadList;
 
 		$scope.rename = function(taskList) {
 			sModal.open({
