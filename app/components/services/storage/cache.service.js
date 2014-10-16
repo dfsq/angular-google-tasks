@@ -34,5 +34,5 @@
 
 	cache.$inject = ['$q'];
 
-	angular.module('components.services.cache', []).factory('cache', cache);
+	angular.module('storage.cache', []).factory('cache', cache);
 })();

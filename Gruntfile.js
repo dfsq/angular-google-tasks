@@ -139,8 +139,8 @@ module.exports = function(grunt) {
 		grunt.task.run('clean:deploy');
 	});
 
-	grunt.registerTask('default', ['build']);
-
 	grunt.registerTask('server', ['connect']);
+
+	grunt.registerTask('default', ['server']);
 
 };
