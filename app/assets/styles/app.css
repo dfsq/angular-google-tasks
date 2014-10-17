@@ -375,7 +375,13 @@ header .back img {
 	cursor: pointer;
 	opacity: .2;
 }
-.tasks-screen li .task .actions:hover span {
+.tasks-screen li .task .actions span:hover {
+	opacity: 1;
+}
+
+.tasks-screen li .task .actions .active {
+	color: #08C;
+	font-weight: bold;
 	opacity: 1;
 }
 

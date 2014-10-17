@@ -31,6 +31,10 @@
 			});
 		};
 
+		$scope.pinTask = function() {
+			window.alert('pin: no idea yet');
+		};
+
 		$scope.changeStatus = function(task) {
 			if (task.status === 'needsAction') {
 				delete task.completed;
