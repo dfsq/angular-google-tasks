@@ -16,6 +16,13 @@ html, body, .view {
 	border-radius: 0;
 }
 
+.modal-content .modal-body .close {
+	position: absolute;
+	top: 4px;
+	right: 12px;
+	font-size: 40px;
+}
+
 
 
 /* ngView */
@@ -135,8 +142,27 @@ header .back img {
 }
 .login-screen .btn-about {
 	position: absolute;
-	top: 0;
-	right: 0;
+	top: 15px;
+	right: 15px;
+	text-decoration: none;
+	cursor: pointer;
+}
+.login-screen .btn-about i {
+	display: block;
+	width: 40px;
+	height: 40px;
+	line-height: 37px;
+	border: 2px #DDD solid;
+	border-radius: 50%;
+	color: #DDD;
+	font-size: 25px;
+	font-style: normal;
+}
+.login-screen .btn-about:hover i {
+	color: #5CB85C;
+}
+.login-screen .btn-about:active i {
+	border-color: #4CAE4C;
 }
 
 
