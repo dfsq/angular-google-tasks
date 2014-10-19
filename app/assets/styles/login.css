@@ -1,0 +1,45 @@
+.login-screen {
+	padding-top: 1px;
+	background: #2C3E50;
+	color: #fff;
+	text-align: center;
+}
+.login-screen .container {
+	margin-top: 100px;
+}
+.login-screen h1 {
+	position: relative;
+}
+.login-screen h1 p {
+	display: inline;
+	font-size: 12px;
+}
+.login-screen h1 .line {
+	position: absolute;
+	bottom: -20px;
+	margin-left: -8px;
+}
+.login-screen .btn-about {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	text-decoration: none;
+	cursor: pointer;
+}
+.login-screen .btn-about i {
+	display: block;
+	width: 40px;
+	height: 40px;
+	line-height: 37px;
+	border: 2px #DDD solid;
+	border-radius: 50%;
+	color: #DDD;
+	font-size: 25px;
+	font-style: normal;
+}
+.login-screen .btn-about:hover i {
+	color: #5CB85C;
+}
+.login-screen .btn-about:active i {
+	border-color: #4CAE4C;
+}

@@ -51,7 +51,7 @@ module.exports = function(grunt) {
 					'dist/assets/styles/vendors.css': [
 						'bower_components/bootstrap/dist/css/bootstrap.min.css'
 					],
-					'dist/assets/styles/styles.css': ['app/assets/styles/*.css']
+					'dist/assets/styles/styles.css': ['app/**/*.css']
 				}
 			},
 			scripts: {
