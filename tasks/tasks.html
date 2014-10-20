@@ -32,10 +32,11 @@
 			<img src="assets/images/check-unchecked.png" />
 			<img src="assets/images/check-checked.png" />
 		</label>
-		<span class="title">{{task.title}}</span>
+		<span class="title" ng-bind-html="task.title | linky:'_blank'"></span>
 		<span class="actions">
-			<span class="up" title="pin task">&#10138;</span>
-			<span class="delete" title="delete task" ng-click="deleteTask(task.id)">&xotime;</span>
+			<span class="pin" title="pin task" ng-class="{active: task.pinned}" ng-click="pinTask(task)">&star;</span>
+			<span class="delete" title="delete task" ng-click="deleteTask(task.id)">&#8855;</span>
+			<span class="more" title="more" ng-click="more(task)">&hellip;</span>
 		</span>
 	</div>
 	<ul ng-if="task.children.length">

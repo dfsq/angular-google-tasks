@@ -1,11 +1,11 @@
 <form role="form">
 	<div class="modal-body modal-add">
 		<div class="form-group">
-			<input type="text" class="form-control" ng-model="taskListName" placeholder="tasklist name">
+			<input type="text" class="form-control" ng-model="name" placeholder="enter tasklist name" autofocus>
 		</div>
 	</div>
 	<div class="modal-footer">
 		<button type="button" class="btn btn-default" ng-click="$modalInstance.dismiss()">Close</button>
-		<button type="submit" class="btn btn-success" ng-click="$modalInstance.close(taskListName)">Save</button>
+		<button type="submit" class="btn btn-success" ng-click="$modalInstance.close(name)">Save</button>
 	</div>
 </form>
