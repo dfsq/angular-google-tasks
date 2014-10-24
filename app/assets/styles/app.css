@@ -321,6 +321,7 @@ header .back img {
 	color: #333;
 	padding: 0 0 10px;
 	font-size: 20px;
+	word-break: break-all;
 }
 .tasks-screen li {
 	list-style-type: none;
