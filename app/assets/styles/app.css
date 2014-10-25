@@ -181,6 +181,13 @@ header .back img {
 	font-size: 25px;
 }
 
+
+.confirm-modal .icon {
+	padding: 10px 0;
+}
+.confirm-modal .icon img {
+	max-height: 40px;
+}
 .confirm-modal .message {
 	font-size: 24px;
 }
