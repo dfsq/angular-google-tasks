@@ -45,6 +45,7 @@
 		function loadTaskLists(refresh) {
 			tasks.getTaskLists(refresh).then(function(data) {
 				$scope.taskLists = data;
+				console.log('lists', data);
 			});
 		}
 

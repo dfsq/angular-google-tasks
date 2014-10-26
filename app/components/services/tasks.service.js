@@ -5,9 +5,10 @@
 	 * @see https://developers.google.com/google-apps/tasks/v1/reference/
 	 * @param $http
 	 * @param cache
+	 * @param local
 	 * @returns {{getTaskLists: getTaskLists, getTasks: getTasks, moveTask: moveTask, createTask: createTask, deleteTask: deleteTask, updateTask: updateTask}}
 	 */
-	function tasks($http, cache) {
+	function tasks($http, cache, local) {
 
 		var basePath = 'https://www.googleapis.com/tasks/v1',
 			params = {
@@ -59,7 +60,13 @@
 			getTaskLists: function(refresh) {
 				return cache('tasklists', function() {
 					return $http.get(basePath + '/users/@me/lists', params).then(function(response) {
-						return response.data.items;
+						return response.data.items.map(function(el) {
+							var localItem = local.get(el.id);
+							if (localItem) {
+								el.stats = localItem;
+							}
+							return el;
+						});
 					});
 				}, refresh);
 			},
@@ -80,6 +87,14 @@
 						grouped.completed = completed;
 						grouped.todo = total - completed;
 
+						// Save in local storage items information
+						local.set(tasklistId, {
+							items: response.data.items,
+							total: total,
+							completed: completed,
+							todo: total - completed
+						});
+						
 						return grouped;
 					});
 				}, refresh);
@@ -150,7 +165,7 @@
 		};
 	}
 
-	tasks.$inject = ['$http', 'cache'];
+	tasks.$inject = ['$http', 'cache', 'local'];
 
 	angular.module('components.services.tasks', []).factory('tasks', tasks);
 })();
