@@ -7,7 +7,7 @@
 				security.authObject = data;
 				$location.path('/tasklists');
 			}, function(data) {
-				console.log('not ok', data);
+				$scope.error = true;
 			});
 		};
 
