@@ -16,7 +16,7 @@
 			<a class="title" href="#/tasklists/{{taskList.title}}/{{taskList.id}}">{{taskList.title}}</a>
 			<div class="info">{{taskList.updated | date:'short' }}</div>
 			<div class="first">&gt;&gt; Pick up Thomas</div>
-			<h2 class="stats">+9/-2</h2>
+			<h2 class="stats">+{{taskList.stats.todo}}/-{{taskList.stats.completed}}</h2>
 
 			<span class="btn-actions" title="actions" ng-click="showActions=true">&hellip;</span>
 			<div class="actions-overlay">
