@@ -21,6 +21,10 @@ html, body, .view {
 	top: 4px;
 	right: 12px;
 	font-size: 40px;
+	outline: none;
+}
+.modal-content .modal-body .big-title {
+	margin-bottom: 20px;
 }
 
 
