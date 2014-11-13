@@ -24,7 +24,7 @@ You can take a look at this [hosted demo][1].
 
 The MIT License
 
-Copyright (c) 2010-2012 Google, Inc. http://angularjs.org
+Copyright (c) 2014 Aliaksandr Astashenkau.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
