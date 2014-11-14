@@ -13,6 +13,7 @@
 		"grunt-karma": "^0.9.0",
 		"grunt-shell": "~1.0.1",
 		"grunt-usemin": "~2.3.0",
+		"grunt-gh-deploy": "~0.1.0",
 		"karma": "^0.12.19",
 		"karma-cli": "^0.0.4",
 		"karma-jasmine": "~0.2.0",

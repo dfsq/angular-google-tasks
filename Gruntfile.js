@@ -8,8 +8,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-usemin');
-	grunt.loadNpmTasks('grunt-shell');
 	grunt.loadNpmTasks('grunt-karma');
+	grunt.loadNpmTasks('grunt-gh-deploy');
 
 	grunt.initConfig({
 
@@ -87,34 +87,19 @@ module.exports = function(grunt) {
 			html: ['dist/index.html']
 		},
 
-		shell: {
-			deploy: {
-				options: {
-					stdin: false
-				},
-				command: function(message) {
-					return [
-						'mkdir tmp',
-						'cd tmp',
-						'git init',
-						'git remote add -t gh-pages -f origin https://github.com/dfsq/angular-google-tasks.git',
-						'git checkout gh-pages',
-						'find -not -path "./.git/*" -not -name ".git" -delete',
-						'cp -r ../dist/* ./',
-						'git add -A ',
-						'git commit -m ' + message,
-						'git push origin gh-pages'
-					].join(' && ');
-				}
-			}
-		},
-
 		karma: {
 			unit: {
 				configFile: 'karma.conf.js'
 			},
 			dist: {
 				configFile: 'karma.dist.conf.js'
+			}
+		},
+
+		ghDeploy: {
+			options: {
+				repository: 'https://github.com/dfsq/angular-google-tasks.git',
+				deployPath: 'dist'
 			}
 		}
 	});
@@ -129,15 +114,11 @@ module.exports = function(grunt) {
 		'usemin'
 	]);
 
-	grunt.registerTask('deploy', function(message) {
+	grunt.registerTask('deploy', function() {
 		grunt.task.run('build');
 		grunt.task.run('karma:dist');
-		if (!message) {
-			grunt.fail.warn('Provide commit message');
-		}
 		grunt.task.run('clean:deploy');
-		grunt.task.run('shell:deploy:"' + (message || '') + '"');
-		grunt.task.run('clean:deploy');
+		grunt.task.run('ghDeploy');
 	});
 
 	grunt.registerTask('server', ['connect']);
