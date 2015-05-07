@@ -206,9 +206,15 @@ header .back img {
 	vertical-align: top;
 	margin: 0 20px 20px 0;
 	color: #FFF;
-	font-size: 18px;
 	background: rgba(185, 231, 176, 0.3);
+	font-size: 18px;
 	position: relative;
+}
+.task-lists > li.no-child {
+	background: rgba(185, 231, 176, 0.3) url(../images/view.png) no-repeat 50% 63%;
+}
+.task-lists > li.no-child .first {
+	display: none;
 }
 .task-lists > li > a {
 	font-size: 28px;
@@ -223,7 +229,7 @@ header .back img {
 	right: 15px;
 }
 .task-lists > li:not(.actions):hover {
-	background: rgba(226, 83, 56, 0.32) !important;
+	background-color: rgba(226, 83, 56, 0.32) !important;
 }
 .task-lists .info {
 	font-size: .7em;
@@ -233,7 +239,7 @@ header .back img {
 	margin-top: 10px;
 	color: #BBB;
 	word-break: break-all;
-	max-height: 50px;
+	max-height: 80px;
 	overflow: hidden;
 }
 

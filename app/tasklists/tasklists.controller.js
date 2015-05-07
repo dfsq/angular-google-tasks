@@ -3,6 +3,16 @@
 
 	function tasklistsController($scope, tasks, sModal) {
 
+		function loadTaskLists(refresh) {
+			tasks.getTaskLists(refresh).then(function(data) {
+				$scope.taskLists = data;
+			});
+		}
+
+		function reloadList() {
+			loadTaskLists(true);
+		}
+		
 		$scope.addNew = function() {
 			sModal.open({
 				scope: $scope,
@@ -41,16 +51,6 @@
 				}
 			});
 		};
-
-		function loadTaskLists(refresh) {
-			tasks.getTaskLists(refresh).then(function(data) {
-				$scope.taskLists = data;
-			});
-		}
-
-		function reloadList() {
-			loadTaskLists(true);
-		}
 
 		loadTaskLists(false);
 	}
