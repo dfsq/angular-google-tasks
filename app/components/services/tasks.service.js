@@ -60,15 +60,17 @@
 			getTaskLists: function(refresh) {
 				return cache('tasklists', function() {
 					return $http.get(basePath + '/users/@me/lists', params).then(function(response) {
-						return response.data.items.map(function(el) {
-							var localItem = local.get(el.id);
-							if (localItem) {
-								el.stats = localItem;
-							}
-							return el;
-						});
+						return response.data;
 					});
-				}, refresh);
+				}, refresh).then(function(data) {
+					return data.items.map(function(el) {
+						var localItem = local.get(el.id);
+						if (localItem) {
+							el.stats = localItem;
+						}
+						return el;
+					});
+				});
 			},
 
 			getTasks: function(tasklistId, refresh) {
