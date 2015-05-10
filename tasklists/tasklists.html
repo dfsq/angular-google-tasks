@@ -12,10 +12,15 @@
 	</header>
 
 	<ul class="task-lists list-unstyled">
-		<li ng-repeat="taskList in taskLists" colorize=".title" ng-class="{actions: showActions}">
+		<li ng-repeat="taskList in taskLists" 
+			colorize=".title" 
+			ng-class="{actions: showActions, 'no-child': !taskList.stats.items.length}">
+			
 			<a class="title" href="#/tasklists/{{taskList.title}}/{{taskList.id}}">{{taskList.title}}</a>
 			<div class="info">{{taskList.updated | date:'short' }}</div>
-			<div class="first">&gt;&gt; Pick up Thomas</div>
+			<div class="first">
+				&gt;&gt; {{taskList.stats.items[0].title}} 
+			</div>
 			<h2 class="stats">+{{taskList.stats.todo}}/-{{taskList.stats.completed}}</h2>
 
 			<span class="btn-actions" title="actions" ng-click="showActions=true">&hellip;</span>
