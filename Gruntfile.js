@@ -123,6 +123,8 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('server', ['connect']);
 
+    grunt.registerTask('test', ['karma:unit']);
+
 	grunt.registerTask('default', ['server']);
 
 };
