@@ -76,30 +76,28 @@
 			getTasks: function(tasklistId, refresh) {
 				return cache('tasks' + tasklistId, function() {
 					return $http.get(basePath + '/lists/' + tasklistId + '/tasks', params).then(function(response) {
-
-						if (!response.data.items) {
-							return [];
-						}
-
-						var total = response.data.items.length,
-							completed = getCompleted(response.data.items),
-							grouped = groupTasks(response.data.items);
-
-						grouped.total = total;
-						grouped.completed = completed;
-						grouped.todo = total - completed;
-
-						// Save in local storage items information
-						local.set(tasklistId, {
-							items: response.data.items,
-							total: total,
-							completed: completed,
-							todo: total - completed
-						});
-						
-						return grouped;
+                        return response.data.items || [];
 					});
-				}, refresh);
+				}, refresh).then(function(items) {
+
+                    var total = items.length,
+                        completed = getCompleted(items),
+                        grouped = groupTasks(items);
+
+                    grouped.total = total;
+                    grouped.completed = completed;
+                    grouped.todo = total - completed;
+
+                    // Save in local storage items information
+                    local.set(tasklistId, {
+                        items: items,
+                        total: total,
+                        completed: completed,
+                        todo: total - completed
+                    });
+
+                    return grouped;
+                });
 			},
 
 			/**
