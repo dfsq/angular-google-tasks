@@ -1,19 +1,28 @@
-'use strict';
+(function () {
 
-angular.module('googleTasks').controller('appController', ['$scope', '$route', 'application', function($scope, $route, application) {
+	'use strict';
 
-	application.ready(function () {
-		$scope.appReady = true;
-	});
+	function appController($scope, $route, application) {
 
-	$scope.$on('$routeChangeSuccess', function(newVal, oldVal) {
-		if (oldVal !== newVal) {
-			$scope.routeClassName = $route.current.page.className;
-			document.title = $route.current.page.title;
-		}
-	});
+		application.ready(function () {
+			$scope.appReady = true;
+		});
 
-	$scope.back = function() {
-		window.history.back();
-	};
-}]);
+		$scope.$on('$routeChangeSuccess', function (newVal, oldVal) {
+			console.log('inside hangeler');
+			if (oldVal !== newVal) {
+				$scope.routeClassName = $route.current.page.className;
+				document.title = $route.current.page.title;
+			}
+		});
+
+		$scope.back = function () {
+			window.history.back();
+		};
+	}
+
+	appController.$inject = ['$scope', '$route', 'application'];
+
+	angular.module('googleTasks').controller('appController', appController);
+
+})();

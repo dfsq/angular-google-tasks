@@ -39,7 +39,9 @@
 			if (task.status === 'needsAction') {
 				delete task.completed;
 			}
-			tasks.updateTask(tasklistId, task, { status: task.status });
+			tasks.updateTask(tasklistId, task, { status: task.status }).then(function() {
+                loadTasks(true);
+            });
 		};
 
 		function loadTasks(refresh) {
