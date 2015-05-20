@@ -1,8 +1,8 @@
-<div class="modal-body text-center confirm-modal">
+<div class="modal-body text-center confirm-modal" tabindex="0">
 	<div class="icon"><img src="assets/images/question.png" alt="" /></div>
 	<div class="message">{{message}}</div>
 </div>
 <div class="modal-footer">
-	<button type="button" class="btn btn-default" ng-click="$modalInstance.dismiss()">Cancel</button>
-	<button type="submit" class="btn btn-success" ng-click="$modalInstance.close()">Ok</button>
+	<button type="button" class="btn btn-default" tabindex="0" ng-click="$modalInstance.dismiss()">Cancel</button>
+	<button type="submit" class="btn btn-success" tabindex="0" ng-click="$modalInstance.close()">Ok</button>
 </div>
